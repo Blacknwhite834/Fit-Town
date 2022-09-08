@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HompageController extends AbstractController
+class HomepageController extends AbstractController
 {
     #[Route('/homepage', name: 'app_homepage')]
     public function index(): Response

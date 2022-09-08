@@ -7,8 +7,11 @@ security:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
-                class: App\Entity\User
+                class: App\Entity\Admin
                 property: email
+        # used to reload user from session & other features (e.g. switch_user)
+        # used to reload user from session & other features (e.g. switch_user)
+        # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -31,8 +34,12 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/homepage, roles: [ROLE_ADMIN, ROLE_PARTENAIRE, ROLE_STRUCTURE] }
         # - { path: ^/profile, roles: ROLE_USER }
+    role_hierarchy:
+        ROLE_ADMIN: [ ROLE_USER, ROLE_PARTENAIRE, ROLE_STRUCTURE ]
+        ROLE_PARTENAIRE: ROLE_USER
+        ROLE_STRUCTURE: ROLE_USER
 
 when@test:
     security:

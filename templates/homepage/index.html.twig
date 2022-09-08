@@ -1,20 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello HomepageController!{% endblock %}
-
+{% block stylesheets %}
+    <link href="{{ asset('assets/styles/homepage.css')}}" rel="stylesheet">
+{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="sidenav">
+        <img src="{{ asset('assets/images/logo.png')}}" alt="logo" class="logo">
+        <div class="menu">
+          <a href="#"><img src="{{ asset('assets/images/dashboard.png')}}"/>Dashboard</a>
+        <a href="#"><img src="{{ asset('assets/images/structure.png')}}"/>Structures</a>
+        <a href="#"><img src="{{ asset('assets/images/logout.png')}}"/>Log out</a>
+        </div>
+        <div class="profile">
+            <img src="{{ asset('assets/images/profile.png')}}" alt="profile" class="profile">
+            <h1>Dunkerke Fit Town</h1>
+            <h2>dunkerke@gmail.com</h2>
+        </div>
+    </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <!-- Page content -->
+    <div class="main">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/evanc/ecf-finale/src/Controller/HomepageController.php'|file_link(0) }}">src/Controller/HompageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/evanc/ecf-finale/templates/homepage/index.html.twig'|file_link(0) }}">templates/hompage/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <h1>Dashboard</h1>
+        <h2>Bienvenue, Dunkerke !</h2>
+    </div>
 {% endblock %}

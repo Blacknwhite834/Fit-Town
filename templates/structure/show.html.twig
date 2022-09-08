@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Structure{% endblock %}
+
+{% block body %}
+    <h1>Structure</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ structure.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ structure.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ structure.roles ? structure.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ structure.password }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ structure.Adresse }}</td>
+            </tr>
+            <tr>
+                <th>Is_active</th>
+                <td>{{ structure.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_structure_index') }}">back to list</a>
+
+    <a href="{{ path('app_structure_edit', {'id': structure.id}) }}">edit</a>
+
+    {{ include('structure/_delete_form.html.twig') }}
+{% endblock %}
