@@ -41,6 +41,11 @@ class Partenaire implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $is_active = false;
 
+    #[ORM\OneToOne(mappedBy: 'partenaire', cascade: ['persist', 'remove'])]
+    private ?PartenairePermission $partenairePermission = null;
+
+
+
     public function __construct()
     {
         $this->structures = new ArrayCollection();
@@ -181,4 +186,22 @@ class Partenaire implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getPartenairePermission(): ?PartenairePermission
+    {
+        return $this->partenairePermission;
+    }
+
+    public function setPartenairePermission(PartenairePermission $partenairePermission): self
+    {
+        // set the owning side of the relation if necessary
+        if ($partenairePermission->getPartenaire() !== $this) {
+            $partenairePermission->setPartenaire($this);
+        }
+
+        $this->partenairePermission = $partenairePermission;
+
+        return $this;
+    }
+
 }

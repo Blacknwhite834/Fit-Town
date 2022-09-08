@@ -43,6 +43,12 @@ class PartenairePermission
     #[ORM\Column]
     private ?bool $is_payment_day_read = null;
 
+    #[ORM\OneToOne(inversedBy: 'partenairePermission', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Partenaire $partenaire = null;
+
+
+
 
     public function getId(): ?int
     {
@@ -168,6 +174,20 @@ class PartenairePermission
 
         return $this;
     }
+
+    public function getPartenaire(): ?Partenaire
+    {
+        return $this->partenaire;
+    }
+
+    public function setPartenaire(Partenaire $partenaire): self
+    {
+        $this->partenaire = $partenaire;
+
+        return $this;
+    }
+
+
 
 
 }

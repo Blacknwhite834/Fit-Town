@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Partenaire;
+use App\Entity\PartenairePermission;
+use App\Form\PartenairePermissionType;
 use App\Form\PartenaireType;
 use App\Repository\PartenaireRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,12 +42,36 @@ class PartenaireController extends AbstractController
                 ));
             $partenaireRepository->add($partenaire, true);
 
-            return $this->redirectToRoute('app_partenaire_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_partenaire_permission', ['id'=>$partenaire->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('partenaire/new.html.twig', [
             'partenaire' => $partenaire,
             'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}/permission', name: 'app_partenaire_permission', methods: ['GET', 'POST'])] // id of the newly created post /permission
+    public function permission(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $partenairePermission = new PartenairePermission();
+        $form = $this->createForm(PartenairePermissionType::class, $partenairePermission);
+        $form->handleRequest($request);
+        $partenaire = $entityManager->getRepository(Partenaire::class)->findOneBy([ // get the newly created partenaire id
+            'id' => $request->get('id')
+        ]);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $partenairePermission->setPartenaire($partenaire);
+            $entityManager->persist($partenairePermission);
+            $entityManager->flush();
+            return $this->redirectToRoute('app_partenaire_index', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->render('partenaire/permission.html.twig', [
+            'partenaire' => $partenaire,
+            'partenairePermission' => $partenairePermission,
+            'form' => $form->createView(),
         ]);
     }
 
