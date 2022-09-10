@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StructurePageController!{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('assets/styles/homepage.css')}}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    {{ block('homepage', 'homepage/index.html.twig') }}
+<div class="main">
+
+    <h1>Structure</h1>
+    <h2>Structure à {{ name }} </h2>
+
+
+    <div class="cards">
+
+
+        <div>
+            <table>
+                <tbody>
+                {% for structure in structures %}
+                    <tr class="annonce" onclick="location.href='{{path('app_structure_show', {'id': structure.id})}}';">
+                        <td id="h3">Structures</td>
+                        <td id="h1">{{ structure.Adresse }}</td>
+                        <td><div id="img"><img src="{{ asset('assets/images/arrow.png')}}"/></div></td>
+                    </tr>
+                {% else %}
+
+                    <h1 colspan="7">Pas de structure/s pour le moment</h1>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

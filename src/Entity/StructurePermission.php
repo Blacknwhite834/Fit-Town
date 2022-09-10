@@ -44,6 +44,10 @@ class StructurePermission
     #[ORM\Column]
     private ?bool $is_payment_day_read = null;
 
+    #[ORM\OneToOne(inversedBy: 'structurePermission', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Structure $Structure = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -166,6 +170,18 @@ class StructurePermission
     public function setIsPaymentDayRead(bool $is_payment_day_read): self
     {
         $this->is_payment_day_read = $is_payment_day_read;
+
+        return $this;
+    }
+
+    public function getStructure(): ?Structure
+    {
+        return $this->Structure;
+    }
+
+    public function setStructure(Structure $Structure): self
+    {
+        $this->Structure = $Structure;
 
         return $this;
     }

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Partenaire;
 use App\Entity\Structure;
+use App\Entity\StructurePermission;
 use App\Form\StructureType;
 use App\Repository\StructureRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -34,15 +35,36 @@ class StructureController extends AbstractController
             'id' => $request->get('id')
         ]);
 
+
+        $structurePermission = new StructurePermission();
+
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $structurePermission->setIsMembersRead($partenaire->getPartenairePermission()->isIsMembersRead());
+            $structurePermission->setIsMembersWrite($partenaire->getPartenairePermission()->isIsMembersWrite());
+            $structurePermission->setIsMembersAdd($partenaire->getPartenairePermission()->isIsMembersAdd());
+            $structurePermission->setIsMembersProductsAdd($partenaire->getPartenairePermission()->isIsMembersProductsAdd());
+            $structurePermission->setIsMembersPaymentSchedulesRead($partenaire->getPartenairePermission()->isIsMembersPaymentSchedulesRead());
+            $structurePermission->setIsMembersStatistiquesRead($partenaire->getPartenairePermission()->isIsMembersStatistiquesRead());
+            $structurePermission->setIsMembersSubscriptionRead($partenaire->getPartenairePermission()->isIsMembersSubscriptionRead());
+            $structurePermission->setIsPaymentSchedulesRead($partenaire->getPartenairePermission()->isIsPaymentSchedulesRead());
+            $structurePermission->setIsPaymentSchedulesWrite($partenaire->getPartenairePermission()->isIsPaymentSchedulesWrite());
+            $structurePermission->setIsPaymentDayRead($partenaire->getPartenairePermission()->isIsPaymentDayRead());
+
+
+
+
             $structure->setIsActive(true);
             $structure->setRoles(['ROLE_STRUCTURE']);
+            $structurePermission->setStructure($structure);
             $structure->setPartenaire($partenaire);
             $structure->setPassword(
                 $userPasswordHasher->hashPassword(
                     $structure,
                     $form->get('plainPassword')->getData()
                 ));
+            $entityManager->persist($structurePermission);
+            $entityManager->flush();
             $structureRepository->add($structure, true);
 
             return $this->redirectToRoute('app_structure_index', [], Response::HTTP_SEE_OTHER);

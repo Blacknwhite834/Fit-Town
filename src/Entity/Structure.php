@@ -36,6 +36,9 @@ class Structure implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $is_active = false;
 
+    #[ORM\OneToOne(mappedBy: 'Structure', cascade: ['persist', 'remove'])]
+    private ?StructurePermission $structurePermission = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -138,6 +141,23 @@ class Structure implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsActive(bool $is_active): self
     {
         $this->is_active = $is_active;
+
+        return $this;
+    }
+
+    public function getStructurePermission(): ?StructurePermission
+    {
+        return $this->structurePermission;
+    }
+
+    public function setStructurePermission(StructurePermission $structurePermission): self
+    {
+        // set the owning side of the relation if necessary
+        if ($structurePermission->getStructure() !== $this) {
+            $structurePermission->setStructure($this);
+        }
+
+        $this->structurePermission = $structurePermission;
 
         return $this;
     }

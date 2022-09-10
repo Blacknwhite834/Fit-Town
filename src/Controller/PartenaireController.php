@@ -62,6 +62,8 @@ class PartenaireController extends AbstractController
         ]);
 
 
+
+
         if ($form->isSubmitted() && $form->isValid()) {
             $partenairePermission->setPartenaire($partenaire);
             $entityManager->persist($partenairePermission);

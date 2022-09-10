@@ -5,24 +5,88 @@
     <link href="{{ asset('assets/styles/homepage.css')}}" rel="stylesheet">
 {% endblock %}
 {% block body %}
+    {%block homepage%}
     <div class="sidenav">
         <img src="{{ asset('assets/images/logo.png')}}" alt="logo" class="logo">
         <div class="menu">
-          <a href="#"><img src="{{ asset('assets/images/dashboard.png')}}"/>Dashboard</a>
-        <a href="#"><img src="{{ asset('assets/images/structure.png')}}"/>Structures</a>
-        <a href="#"><img src="{{ asset('assets/images/logout.png')}}"/>Log out</a>
+          <a href="{{ path('app_homepage') }}"><img src="{{ asset('assets/images/dashboard.png')}}"/>Dashboard</a>
+        <a href="{{ path('app_structure_page') }}"><img src="{{ asset('assets/images/structure.png')}}"/>Structures</a>
+        <a href="{{ path('app_logout') }}"><img src="{{ asset('assets/images/logout.png')}}"/>Log out</a>
         </div>
         <div class="profile">
             <img src="{{ asset('assets/images/profile.png')}}" alt="profile" class="profile">
-            <h1>Dunkerke Fit Town</h1>
-            <h2>dunkerke@gmail.com</h2>
+            <h1>{{ name }} Fit Town</h1>
+            <h2>{{ email }}</h2>
         </div>
     </div>
-
+    {% endblock %}
     <!-- Page content -->
     <div class="main">
 
         <h1>Dashboard</h1>
-        <h2>Bienvenue, Dunkerke !</h2>
+        <h2>Bienvenue, {{ name }} !</h2>
+
+        <div class="cards">
+
+
+            <div>
+                        <table>
+                            <tbody>
+                                        {% for structure in structures %}
+
+                                            <tr class="annonce" onclick="location.href='{{path('app_structure_show', {'id': structure.id})}}';">
+                                                     <td id="h3">Structures</td>
+                                                         <td id="h1">{{ structure.Adresse }}</td>
+                                                        <td><div id="img"><img src="{{ asset('assets/images/arrow.png')}}"/></div></td>
+                                            </tr>
+                                         {% else %}
+
+                                                        <h1 colspan="7">no records found</h1>
+
+                                        {% endfor %}
+
+                            </tbody>
+                        </table>
+            </div>
+
+
+
+
+                    <div class="card-single" onclick="location.href='{{path('app_structure_page')}}'">
+                                <h3>Structures</h3>
+                                <h1>Voir plus...</h1>
+                        <div id="img2"><img src="{{ asset('assets/images/arrow.png')}}"/></div>
+                    </div>
+        </div>
+
+        <h2>Permission globales</h2>
+        <div class="wrapper-permission">
+            <table class="table">
+
+
+        {% for permission in permission %}
+        <tr>
+
+            <td> isMembersRead {{ permission.isMembersRead ? 'On' : 'Off'}}</td>
+            <td> isMembersWrite  {{ permission.isMembersWrite ? 'On' : 'Off'}}</td>
+            <td>isMembersAdd {{ permission.isMembersAdd ? 'On' : 'Off'}}</td>
+        </tr>
+            <tr>
+            <td> isMembersProductsAdd {{ permission.isMembersProductsAdd ? 'On' : 'Off'}}</td>
+            <td> isMembersPaymentSchedulesRead {{ permission.isMembersPaymentSchedulesRead ? 'On' : 'Off'}}</td>
+            <td> isMembersStatistiquesRead {{ permission.isMembersStatistiquesRead ? 'On' : 'Off'}}</td>
+            <tr>
+            <td> isMembersSubscriptionRead {{ permission.isMembersSubscriptionRead ? 'On' : 'Off'}}</td>
+            <td> isPaymentSchedulesRead {{ permission.isPaymentSchedulesRead ? 'On' : 'Off'}}</td>
+            <td> isPaymentSchedulesWrite  {{ permission.isPaymentSchedulesWrite ? 'On' : 'Off'}}</td>
+            </tr>
+            <tr>
+            <td> isPaymentDayRead {{ permission.isPaymentDayRead ? 'On' : 'Off'}}</td>
+        </tr>
+            {% endfor %}
+
+            </table>
+        </div>
+
     </div>
 {% endblock %}
