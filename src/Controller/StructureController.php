@@ -6,6 +6,7 @@ use App\Entity\Partenaire;
 use App\Entity\Structure;
 use App\Entity\StructurePermission;
 use App\Form\StructureType;
+use App\Repository\StructurePermissionRepository;
 use App\Repository\StructureRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -77,10 +78,22 @@ class StructureController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_structure_show', methods: ['GET'])]
-    public function show(Structure $structure): Response
+    public function show(Structure $structure, StructurePermissionRepository $structurePermissionRepository): Response
     {
+
+
+
+        $getName = $this->getUser()->getName();
+        $getEmail = $this->getUser()->getEmail();
+
         return $this->render('structure/show.html.twig', [
             'structure' => $structure,
+            'permissions'=>$structurePermissionRepository->findBy(
+                ['Structure' => $structure->getId()],
+                [],
+            ),
+            'name'=>$getName,
+            'email'=>$getEmail,
         ]);
     }
 

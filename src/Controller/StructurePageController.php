@@ -23,8 +23,6 @@ class StructurePageController extends AbstractController
             'structures'=>$structureRepository->findBy(
                 ['is_active' => true, 'partenaire' => $this->getUser()->getId()],
                 [],
-                2,
-                0
             ),
         ]);
     }

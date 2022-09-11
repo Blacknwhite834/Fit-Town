@@ -7,11 +7,11 @@
 {% block body %}
     {%block homepage%}
     <div class="sidenav">
-        <img src="{{ asset('assets/images/logo.png')}}" alt="logo" class="logo">
+        <img src="{{ asset('assets/images/logo.png')}}" alt="logo" class="logo" onclick="location.href='{{path('app_homepage')}}';">
         <div class="menu">
-          <a href="{{ path('app_homepage') }}"><img src="{{ asset('assets/images/dashboard.png')}}"/>Dashboard</a>
-        <a href="{{ path('app_structure_page') }}"><img src="{{ asset('assets/images/structure.png')}}"/>Structures</a>
-        <a href="{{ path('app_logout') }}"><img src="{{ asset('assets/images/logout.png')}}"/>Log out</a>
+            <li {% if app.request.attributes.get('_route') == 'app_homepage' %} class="active" {% endif %}> <a href="{{ path('app_homepage') }}" ><img src="{{ asset('assets/images/dashboard.png')}}"/>Dashboard</a></li>
+            <li {% if app.request.attributes.get('_route') == 'app_structure_page' %} class="active" {% endif %}>  <a href="{{ path('app_structure_page') }}"><img src="{{ asset('assets/images/structure.png')}}"/>Structures</a></li>
+            <li {% if app.request.attributes.get('_route') == 'app_logout' %} class="active" {% endif %}>  <a href="{{ path('app_logout') }}"><img src="{{ asset('assets/images/logout.png')}}"/>Log out</a></li>
         </div>
         <div class="profile">
             <img src="{{ asset('assets/images/profile.png')}}" alt="profile" class="profile">

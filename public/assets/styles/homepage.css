@@ -10,6 +10,14 @@ html {
 
 }
 
+.active {
+
+}
+
+li {
+    list-style: none;
+    text-decoration: none;
+}
 
 
 .sidenav {
@@ -26,6 +34,16 @@ html {
 
 .logo {
     margin-left: 30px;
+    cursor: pointer;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+
+.logo:hover {
+    opacity: 60%;
 }
 
 /* The navigation menu links */

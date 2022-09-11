@@ -1,28 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Structure{% endblock %}
-
+{% block stylesheets %}
+<link href="{{ asset('assets/styles/homepage.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/styles/structure-show.css')}}" rel="stylesheet">
+{% endblock %}
 {% block body %}
+     {{ block('homepage', 'homepage/index.html.twig') }}
+    <div class="main">
     <h1>Structure</h1>
+        <h2>Structure à {{ name }} </h2>
 
+
+        <div class="wrapper-1">
+            <h3>Structure</h3>
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ structure.id }}</td>
-            </tr>
+
             <tr>
                 <th>Email</th>
                 <td>{{ structure.email }}</td>
             </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ structure.roles ? structure.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ structure.password }}</td>
-            </tr>
+
             <tr>
                 <th>Adresse</th>
                 <td>{{ structure.Adresse }}</td>
@@ -33,10 +32,36 @@
             </tr>
         </tbody>
     </table>
+        </div>
 
-    <a href="{{ path('app_structure_index') }}">back to list</a>
+        <h2 id="title-2">Permissions de la structure</h2>
+        <div class="wrapper-permission">
+            <table class="table">
 
-    <a href="{{ path('app_structure_edit', {'id': structure.id}) }}">edit</a>
 
-    {{ include('structure/_delete_form.html.twig') }}
+                {% for permissions in permissions %}
+                    <tr>
+
+                        <td> isMembersRead {{ permissions.isMembersRead ? 'On' : 'Off'}}</td>
+                        <td> isMembersWrite  {{ permissions.isMembersWrite ? 'On' : 'Off'}}</td>
+                        <td>isMembersAdd {{ permissions.isMembersAdd ? 'On' : 'Off'}}</td>
+                    </tr>
+                    <tr>
+                        <td> isMembersProductsAdd {{ permissions.isMembersProductsAdd ? 'On' : 'Off'}}</td>
+                        <td> isMembersPaymentSchedulesRead {{ permissions.isMembersPaymentSchedulesRead ? 'On' : 'Off'}}</td>
+                        <td> isMembersStatistiquesRead {{ permissions.isMembersStatistiquesRead ? 'On' : 'Off'}}</td>
+                    <tr>
+                        <td> isMembersSubscriptionRead {{ permissions.isMembersSubscriptionRead ? 'On' : 'Off'}}</td>
+                        <td> isPaymentSchedulesRead {{ permissions.isPaymentSchedulesRead ? 'On' : 'Off'}}</td>
+                        <td> isPaymentSchedulesWrite  {{ permissions.isPaymentSchedulesWrite ? 'On' : 'Off'}}</td>
+                    </tr>
+                    <tr>
+                        <td> isPaymentDayRead {{ permissions.isPaymentDayRead ? 'On' : 'Off'}}</td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+
+    </div>
 {% endblock %}
