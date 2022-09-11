@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomepageStructureController!{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('assets/styles/homepage.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/styles/structure-show.css')}}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <div class="sidenav">
+        <img src="{{ asset('assets/images/logo.png')}}" alt="logo" class="logo" onclick="location.href='{{path('app_homepage')}}';">
+        <div class="menu">
+            <li {% if app.request.attributes.get('_route') == 'app_homepage' %} class="active" {% endif %}> <a href="{{ path('app_homepage') }}" ><img src="{{ asset('assets/images/dashboard.png')}}"/>Dashboard</a></li>
+            <li {% if app.request.attributes.get('_route') == 'app_logout' %} class="active" {% endif %}>  <a href="{{ path('app_logout') }}"><img src="{{ asset('assets/images/logout.png')}}"/>Log out</a></li>
+        </div>
+        <div class="profile">
+            <img src="{{ asset('assets/images/profile.png')}}" alt="profile" class="profile">
+            <h1>Fit Town</h1>
+            <h2>{{ email }}</h2>
+        </div>
+    </div>
+<!-- Page content -->
+    <div class="main">
+        <h1>Structure</h1>
+        <h2>Bienvenue ! </h2>
+
+
+        <div class="wrapper-1">
+            <h3>Structure</h3>
+
+            <table class="table">
+                <tbody>
+                {% for structures in structures%}
+                <tr>
+                    <th>Email</th>
+                    <td>{{ structures.email }}</td>
+                </tr>
+
+                <tr>
+                    <th>Adresse</th>
+                    <td>{{ structures.Adresse }}</td>
+                </tr>
+                <tr>
+                    <th>Is_active</th>
+                    <td>{{ structures.isActive ? 'Yes' : 'No' }}</td>
+                </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+
+        <h2 id="title-2">Permissions de la structure</h2>
+        <div class="wrapper-permission">
+            <table class="table">
+
+
+                {% for permissions in permissions %}
+                    <tr>
+
+                        <td> isMembersRead {{ permissions.isMembersRead ? 'On' : 'Off'}}</td>
+                        <td> isMembersWrite  {{ permissions.isMembersWrite ? 'On' : 'Off'}}</td>
+                        <td>isMembersAdd {{ permissions.isMembersAdd ? 'On' : 'Off'}}</td>
+                    </tr>
+                    <tr>
+                        <td> isMembersProductsAdd {{ permissions.isMembersProductsAdd ? 'On' : 'Off'}}</td>
+                        <td> isMembersPaymentSchedulesRead {{ permissions.isMembersPaymentSchedulesRead ? 'On' : 'Off'}}</td>
+                        <td> isMembersStatistiquesRead {{ permissions.isMembersStatistiquesRead ? 'On' : 'Off'}}</td>
+                    <tr>
+                        <td> isMembersSubscriptionRead {{ permissions.isMembersSubscriptionRead ? 'On' : 'Off'}}</td>
+                        <td> isPaymentSchedulesRead {{ permissions.isPaymentSchedulesRead ? 'On' : 'Off'}}</td>
+                        <td> isPaymentSchedulesWrite  {{ permissions.isPaymentSchedulesWrite ? 'On' : 'Off'}}</td>
+                    </tr>
+                    <tr>
+                        <td> isPaymentDayRead {{ permissions.isPaymentDayRead ? 'On' : 'Off'}}</td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+
+    </div>
+{% endblock %}
