@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fit Town{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('assets/styles/homepage.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/styles/homepage-admin.css')}}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+
+     <div class="sidenav">
+         <img src="{{ asset('assets/images/logo.png')}}" alt="logo" class="logo" onclick="location.href='{{path('app_homepage')}}';">
+         <div class="menu">
+             <li {% if app.request.attributes.get('_route') == 'app_homepage' %} class="active" {% endif %}> <a href="{{ path('app_homepage') }}" ><img src="{{ asset('assets/images/dashboard.png')}}"/>Dashboard</a></li>
+             <li {% if app.request.attributes.get('_route') == 'app_structure_page' %} class="active" {% endif %}>  <a href="{{ path('app_structure_page') }}"><img src="{{ asset('assets/images/structure.png')}}"/>Partenaire</a></li>
+             <li {% if app.request.attributes.get('_route') == 'app_logout' %} class="active" {% endif %}>  <a href="{{ path('app_logout') }}"><img src="{{ asset('assets/images/logout.png')}}"/>Log out</a></li>
+         </div>
+         <div class="profile">
+             <img src="{{ asset('assets/images/profile.png')}}" alt="profile" class="profile">
+             <h1>Equipe technique Fit Town</h1>
+             <h2>{{ email }}</h2>
+         </div>
+     </div>
+
+<!-- Page content -->
+<div class="main">
+    <div class="add-button">
+        <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_structure_page') }}">Ajouter</a>
+    </div>
+    <h1>Dashboard</h1>
+    <h2>Bienvenue !</h2>
+
+    <div class="cards">
+
+
+        <div>
+            <table>
+                <tbody>
+                {% for partenaire in partenaire %}
+
+                    <tr class="annonce" onclick="location.href='{{path('app_partenaire_show', {'id': partenaire.id})}}';">
+                        <td id="h3">Partenaire</td>
+                        <td id="h1">{{ partenaire.name }}</td>
+                        <td><div id="img"><img src="{{ asset('assets/images/arrow.png')}}"/></div></td>
+                    </tr>
+                {% else %}
+
+                    <h1 colspan="7">no records found</h1>
+
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+        <div class="card-single" onclick="location.href='{{path('app_structure_page')}}'">
+            <h3>Partenaire</h3>
+            <h1>Voir plus...</h1>
+            <div id="img2"><img src="{{ asset('assets/images/arrow.png')}}"/></div>
+        </div>
+    </div>
+
+
+            <div class="wrapper-pub">
+                <img src="{{ asset('assets/images/banner.png')}}"/>
+            </div>
+</div>
+
+{% endblock %}

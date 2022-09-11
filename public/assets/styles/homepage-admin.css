@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: white;
+    font-family: 'Quicksand', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.wrapper-pub {
+    border-radius: 40px;
+    width: 100%;
+}
+
+.wrapper-pub img {
+    width: 90%;
+}
+
+.add-button {
+    background: black;
+    width: 180px;
+    height: 55px;
+    color: white;
+    list-style: none;
+    text-decoration: none;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    margin: 35px;
+    cursor: pointer;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+
+.add-button:hover {
+    background: #b0b0b0;
+}
+
+.add-button a {
+    color: white;
+    list-style: none;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.add-button img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
