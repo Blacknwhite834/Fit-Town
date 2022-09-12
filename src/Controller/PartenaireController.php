@@ -30,6 +30,24 @@ class PartenaireController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/activate', name: 'app_partenaire_activate', methods: ['GET', 'POST'])]
+    public function activate(EntityManagerInterface $entityManager, Request $request, PartenaireRepository $partenaireRepository): Response
+    {
+
+        $partenaire = $entityManager->getRepository(Partenaire::class)->findOneBy([ // get the id of the partenaire
+        'id' => $request->get('id')
+        ]);
+
+
+
+        $partenaire->setIsActive(($partenaire->isIsActive())?false:true); // set the value of the partenaire to the opposite of what it is ( for toggle switch )
+
+        $entityManager->persist($partenaire);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_partenaire_index', [], Response::HTTP_SEE_OTHER);
+    }
+
     #[Route('/new', name: 'app_partenaire_new', methods: ['GET', 'POST'])]
     public function new(Request $request, PartenaireRepository $partenaireRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {

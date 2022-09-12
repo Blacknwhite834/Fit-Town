@@ -16,19 +16,22 @@
         <h2>Liste des partenaires</h2>
 
 
+
     <table class="table">
         <tbody>
         {% for partenaire in partenaires %}
-            <tr class="annonce" onclick="location.href='{{path('app_partenaire_show', {'id': partenaire.id})}}';">
+            <tr class="annonce" >
                 <td id="h3">Structures</td>
                 <td id="name">{{ partenaire.Name }}</td>
                 <td>{{ partenaire.Description }}</td>
                 <td>{{ partenaire.email }}</td>
-                <td>{{ partenaire.isActive ? 'Yes' : 'No' }}</td>
+                <td><div class="wrapper-switch"><div class="switch">
+                    <input type="checkbox" id="toggleAll" {{ (partenaire.isActive) ? 'checked' : ''}} data-id="{{  partenaire.id }}" /> <!--toggle switch-->
+                    <label for="toggleAll"></label>
+                </div></div></td>
                 <td>
                     <a href="{{ path('app_partenaire_edit', {'id': partenaire.id}) }}">edit</a>
                     <a href="{{ path('app_structure_new', {'id': partenaire.id}) }}">ajouter structure</a>
-
                 </td>
             </tr>
         {% else %}
@@ -39,4 +42,20 @@
         </tbody>
     </table>
     </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        window.onload = () => {
+            let activate = document.querySelectorAll('[type="checkbox"]');
+            for(let bouton of activate){
+                bouton.addEventListener("click", function(){
+                    let xmlhtpp = new XMLHttpRequest();
+
+                    xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate`)
+                    xmlhtpp.send();
+                })
+
+            }
+        }
+    </script>
 {% endblock %}
