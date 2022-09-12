@@ -1,12 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Partenaire{% endblock %}
-
+{% block stylesheets %}
+    <link href="{{ asset('assets/styles/homepage.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/styles/homepage-admin.css')}}" rel="stylesheet">
+{% endblock %}
 {% block body %}
-    <h1>Create new Partenaire Permission</h1>
+    {{ block('homepageadmin', 'homepage_admin/index.html.twig') }}
+    <div class="main">
+    <div class="add-button" onclick="location.href='{{path('app_partenaire_new')}}';">
+        <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_partenaire_new') }}">Ajouter</a>
+    </div>
 
-   {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit">Submit</button>
-    {{ form_end(form) }}
+
+    <h1>Permissions</h1>
+    <h2>Ajouter les permissions globales</h2>
+
+                    {{ form_start(form) }}
+                            {{ form_widget(form) }}
+        <button class="add-button" type="submit" style="margin: 0; float: none">
+            <img src="{{ asset('assets/images/add.png')}}"/> <a>{{ button_label|default('Ajouter') }}</a>
+        </button>
+                    {{ form_end(form) }}
+
+
+
+    </div>
+
 {% endblock %}

@@ -6,12 +6,12 @@
     <link href="{{ asset('assets/styles/homepage-admin.css')}}" rel="stylesheet">
 {% endblock %}
 {% block body %}
-
+         {% block homepageadmin %}
      <div class="sidenav">
-         <img src="{{ asset('assets/images/logo.png')}}" alt="logo" class="logo" onclick="location.href='{{path('app_homepage')}}';">
+         <img src="{{ asset('assets/images/logo.png')}}" alt="logo" class="logo" onclick="location.href='{{path('app_homepage_admin')}}';">
          <div class="menu">
-             <li {% if app.request.attributes.get('_route') == 'app_homepage' %} class="active" {% endif %}> <a href="{{ path('app_homepage') }}" ><img src="{{ asset('assets/images/dashboard.png')}}"/>Dashboard</a></li>
-             <li {% if app.request.attributes.get('_route') == 'app_structure_page' %} class="active" {% endif %}>  <a href="{{ path('app_structure_page') }}"><img src="{{ asset('assets/images/structure.png')}}"/>Partenaire</a></li>
+             <li {% if app.request.attributes.get('_route') == 'app_homepage_admin' %} class="active" {% endif %}> <a href="{{ path('app_homepage_admin') }}" ><img src="{{ asset('assets/images/dashboard.png')}}"/>Dashboard</a></li>
+             <li {% if app.request.attributes.get('_route') == 'app_partenaire_index' %} class="active" {% endif %}>  <a href="{{ path('app_partenaire_index') }}"><img src="{{ asset('assets/images/structure.png')}}"/>Partenaire</a></li>
              <li {% if app.request.attributes.get('_route') == 'app_logout' %} class="active" {% endif %}>  <a href="{{ path('app_logout') }}"><img src="{{ asset('assets/images/logout.png')}}"/>Log out</a></li>
          </div>
          <div class="profile">
@@ -20,11 +20,11 @@
              <h2>{{ email }}</h2>
          </div>
      </div>
-
+         {% endblock%}
 <!-- Page content -->
 <div class="main">
-    <div class="add-button">
-        <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_structure_page') }}">Ajouter</a>
+    <div class="add-button" onclick="location.href='{{path('app_partenaire_new')}}';">
+        <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_partenaire_new') }}">Ajouter</a>
     </div>
     <h1>Dashboard</h1>
     <h2>Bienvenue !</h2>
@@ -55,7 +55,7 @@
 
 
 
-        <div class="card-single" onclick="location.href='{{path('app_structure_page')}}'">
+        <div class="card-single" onclick="location.href='{{path('app_partenaire_index')}}'">
             <h3>Partenaire</h3>
             <h1>Voir plus...</h1>
             <div id="img2"><img src="{{ asset('assets/images/arrow.png')}}"/></div>

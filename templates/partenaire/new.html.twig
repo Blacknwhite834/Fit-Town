@@ -1,11 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Partenaire{% endblock %}
-
+{% block stylesheets %}
+<link href="{{ asset('assets/styles/homepage.css')}}" rel="stylesheet">
+<link href="{{ asset('assets/styles/homepage-admin.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/styles/partenaire-new.css')}}" rel="stylesheet">
+{% endblock %}
 {% block body %}
-    <h1>Create new Partenaire</h1>
+    {{ block('homepageadmin', 'homepage_admin/index.html.twig') }}
+<div class="main">
+    <div class="add-button" onclick="location.href='{{path('app_partenaire_new')}}';">
+        <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_partenaire_new') }}">Ajouter</a>
+    </div>
+    <h1>Partenaire</h1>
+    <h2>Créer un partenaire</h2>
 
+    <div class="wrapper-input">
     {{ include('partenaire/_form.html.twig') }}
-
-    <a href="{{ path('app_partenaire_index') }}">back to list</a>
+    </div>
+</div>
 {% endblock %}

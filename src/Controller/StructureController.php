@@ -29,6 +29,10 @@ class StructureController extends AbstractController
     #[Route('/new', name: 'app_structure_new', methods: ['GET', 'POST'])]
     public function new(EntityManagerInterface $entityManager, Request $request, StructureRepository $structureRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
+
+        $getEmail = $this->getUser()->getEmail();
+
+
         $structure = new Structure();
         $form = $this->createForm(StructureType::class, $structure);
         $form->handleRequest($request);
@@ -74,6 +78,7 @@ class StructureController extends AbstractController
         return $this->renderForm('structure/new.html.twig', [
             'structure' => $structure,
             'form' => $form,
+            'email' => $getEmail,
         ]);
     }
 
@@ -82,8 +87,6 @@ class StructureController extends AbstractController
     {
 
 
-
-        $getName = $this->getUser()->getName();
         $getEmail = $this->getUser()->getEmail();
 
         return $this->render('structure/show.html.twig', [
@@ -92,7 +95,7 @@ class StructureController extends AbstractController
                 ['Structure' => $structure->getId()],
                 [],
             ),
-            'name'=>$getName,
+
             'email'=>$getEmail,
         ]);
     }

@@ -15,7 +15,6 @@ class HomepageController extends AbstractController
     public function index(StructureRepository $structureRepository, PartenairePermissionRepository $partenairePermissionRepository, ): Response
     {
 
-        $getName = $this->getUser()->getName();
         $getEmail = $this->getUser()->getEmail();
 
 
@@ -30,7 +29,7 @@ class HomepageController extends AbstractController
             'permission'=>$partenairePermissionRepository->findBy(
                 ['partenaire' => $this->getUser()->getId()],
             ),
-            'name'=>$getName,
+
             'email'=>$getEmail,
         ]);
     }

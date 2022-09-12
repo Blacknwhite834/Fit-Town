@@ -6,7 +6,9 @@ use App\Entity\Partenaire;
 use App\Entity\PartenairePermission;
 use App\Form\PartenairePermissionType;
 use App\Form\PartenaireType;
+use App\Repository\PartenairePermissionRepository;
 use App\Repository\PartenaireRepository;
+use App\Repository\StructureRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,14 +22,20 @@ class PartenaireController extends AbstractController
     #[Route('/', name: 'app_partenaire_index', methods: ['GET'])]
     public function index(PartenaireRepository $partenaireRepository): Response
     {
+        $getEmail = $this->getUser()->getEmail();
+
         return $this->render('partenaire/index.html.twig', [
             'partenaires' => $partenaireRepository->findAll(),
+            'email'=>$getEmail,
         ]);
     }
 
     #[Route('/new', name: 'app_partenaire_new', methods: ['GET', 'POST'])]
     public function new(Request $request, PartenaireRepository $partenaireRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
+
+        $getEmail = $this->getUser()->getEmail();
+
         $partenaire = new Partenaire();
         $form = $this->createForm(PartenaireType::class, $partenaire);
         $form->handleRequest($request);
@@ -48,6 +56,7 @@ class PartenaireController extends AbstractController
         return $this->renderForm('partenaire/new.html.twig', [
             'partenaire' => $partenaire,
             'form' => $form,
+            'email'=>$getEmail,
         ]);
     }
 
@@ -61,7 +70,7 @@ class PartenaireController extends AbstractController
             'id' => $request->get('id')
         ]);
 
-
+        $getEmail = $this->getUser()->getEmail();
 
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -74,14 +83,29 @@ class PartenaireController extends AbstractController
             'partenaire' => $partenaire,
             'partenairePermission' => $partenairePermission,
             'form' => $form->createView(),
+            'email'=>$getEmail,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_partenaire_show', methods: ['GET'])]
-    public function show(Partenaire $partenaire): Response
+    #[Route('/{id}', name: 'app_partenaire_show', methods: ['GET', 'POST'])]
+    public function show(Partenaire $partenaire, EntityManagerInterface $entityManager, Request $request, PartenairePermissionRepository $partenairePermissionRepository, StructureRepository $structureRepository): Response
     {
+        $getEmail = $this->getUser()->getEmail();
+        $partenaireId = $entityManager->getRepository(Partenaire::class)->findOneBy([ // get the newly created partenaire id
+            'id' => $request->get('id')
+        ]);
+
+
         return $this->render('partenaire/show.html.twig', [
             'partenaire' => $partenaire,
+            'permission'=>$partenairePermissionRepository->findBy(
+                ['partenaire' => $partenaireId],
+            ),
+            'structures'=>$structureRepository->findBy(
+                ['is_active' => true, 'partenaire' => $partenaireId],
+                [],
+            ),
+            'email'=>$getEmail,
         ]);
     }
 

@@ -15,10 +15,16 @@ class PartenaireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
+            ->add('email', null , array(
+                'label' => false,
+                'attr' => array(
+        'placeholder' => 'Email'
+    )
+            ))
             ->add('plainPassword', PasswordType::class, [
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'label' => false,
+                'attr' => ['autocomplete' => 'new-password', 'placeholder' => 'Mot de passe'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez entrer un mot de passe',
@@ -31,8 +37,18 @@ class PartenaireType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('Name')
-            ->add('description')
+            ->add('Name', null , array(
+                'label' => false,
+                'attr' => array(
+                    'placeholder' => 'Nom'
+                )
+            ))
+            ->add('description', null , array(
+                'label' => false,
+                'attr' => array(
+                    'placeholder' => 'Description'
+                )
+            ))
         ;
     }
 

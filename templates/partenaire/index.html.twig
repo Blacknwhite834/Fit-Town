@@ -1,37 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Partenaire index{% endblock %}
-
+{% block stylesheets %}
+    <link href="{{ asset('assets/styles/homepage.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/styles/homepage-admin.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/styles/partenaire-index.css')}}" rel="stylesheet">
+{% endblock %}
 {% block body %}
-    <h1>Partenaire index</h1>
+    {{ block('homepageadmin', 'homepage_admin/index.html.twig') }}
+    <div class="main">
+        <div class="add-button">
+            <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_structure_page') }}">Ajouter</a>
+        </div>
+        <h1>Partenaires</h1>
+        <h2>Liste des partenaires</h2>
+
 
     <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Is_active</th>
-                <th>actions</th>
-            </tr>
-        </thead>
         <tbody>
         {% for partenaire in partenaires %}
-            <tr>
-                <td>{{ partenaire.id }}</td>
+            <tr class="annonce" onclick="location.href='{{path('app_partenaire_show', {'id': partenaire.id})}}';">
+                <td id="h3">Structures</td>
+                <td id="name">{{ partenaire.Name }}</td>
+                <td>{{ partenaire.Description }}</td>
                 <td>{{ partenaire.email }}</td>
-                <td>{{ partenaire.roles ? partenaire.roles|json_encode : '' }}</td>
-                <td>{{ partenaire.password }}</td>
-                <td>{{ partenaire.Name }}</td>
-                <td>{{ partenaire.description }}</td>
                 <td>{{ partenaire.isActive ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('app_partenaire_show', {'id': partenaire.id}) }}">show</a>
                     <a href="{{ path('app_partenaire_edit', {'id': partenaire.id}) }}">edit</a>
-                    <a href="{{ path('app_structure_new', {'id': partenaire.id}) }}">Ajouter structure</a>
+                    <a href="{{ path('app_structure_new', {'id': partenaire.id}) }}">ajouter structure</a>
 
                 </td>
             </tr>
@@ -42,6 +38,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_partenaire_new') }}">Create new</a>
+    </div>
 {% endblock %}

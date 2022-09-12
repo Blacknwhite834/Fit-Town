@@ -1,4 +1,6 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<button class="add-button">
+    <img src="{{ asset('assets/images/add.png')}}"/> <a>{{ button_label|default('Ajouter') }}</a>
+</button>
 {{ form_end(form) }}

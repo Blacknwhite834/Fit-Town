@@ -1,11 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Structure{% endblock %}
-
+{% block stylesheets %}
+    <link href="{{ asset('assets/styles/homepage.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/styles/homepage-admin.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/styles/partenaire-new.css')}}" rel="stylesheet">
+{% endblock %}
 {% block body %}
-    <h1>Create new Structure</h1>
+    {{ block('homepageadmin', 'homepage_admin/index.html.twig') }}
+<div class="main">
+    <div class="add-button" onclick="location.href='{{path('app_partenaire_new')}}';">
+        <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_partenaire_new') }}">Ajouter</a>
+    </div>
+    <h1>Structure</h1>
+    <h2>Créer une structure </h2>
+
+    <div class="wrapper-input">
 
     {{ include('structure/_form.html.twig') }}
+    </div>
+</div>
 
-    <a href="{{ path('app_structure_index') }}">back to list</a>
 {% endblock %}
