@@ -21,7 +21,7 @@ class StructureType extends AbstractType
         'placeholder' => 'Email'
     )
             ))
-            ->add('plainPassword', PasswordType::class, [
+         /*   ->add('plainPassword', PasswordType::class, [
                 'mapped' => false,
                 'label' => false,
                 'attr' => ['autocomplete' => 'new-password', 'placeholder' => 'Mot de passe'],
@@ -36,7 +36,7 @@ class StructureType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-            ])
+            ])*/
             ->add('Adresse',  null , array(
                 'label' => false,
                 'attr' => array(

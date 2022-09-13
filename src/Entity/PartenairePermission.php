@@ -47,6 +47,9 @@ class PartenairePermission
     #[ORM\JoinColumn(nullable: false)]
     private ?Partenaire $partenaire = null;
 
+    #[ORM\OneToOne(mappedBy: 'partenaire_permission', cascade: ['persist', 'remove'])]
+    private ?StructurePermission $structurePermission = null;
+
 
 
 
@@ -183,6 +186,28 @@ class PartenairePermission
     public function setPartenaire(Partenaire $partenaire): self
     {
         $this->partenaire = $partenaire;
+
+        return $this;
+    }
+
+    public function getStructurePermission(): ?StructurePermission
+    {
+        return $this->structurePermission;
+    }
+
+    public function setStructurePermission(?StructurePermission $structurePermission): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($structurePermission === null && $this->structurePermission !== null) {
+            $this->structurePermission->setPartenairePermission(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($structurePermission !== null && $structurePermission->getPartenairePermission() !== $this) {
+            $structurePermission->setPartenairePermission($this);
+        }
+
+        $this->structurePermission = $structurePermission;
 
         return $this;
     }

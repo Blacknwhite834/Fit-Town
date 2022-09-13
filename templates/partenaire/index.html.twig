@@ -9,8 +9,8 @@
 {% block body %}
     {{ block('homepageadmin', 'homepage_admin/index.html.twig') }}
     <div class="main">
-        <div class="add-button">
-            <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_structure_page') }}">Ajouter</a>
+        <div class="add-button" onclick="location.href='{{path('app_partenaire_new')}}';">
+            <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_partenaire_new') }}">Ajouter</a>
         </div>
         <h1>Partenaires</h1>
         <h2>Liste des partenaires</h2>

@@ -42,21 +42,51 @@
                 {% for permissions in permissions %}
                     <tr>
 
-                        <td> isMembersRead {{ permissions.isMembersRead ? 'On' : 'Off'}}</td>
-                        <td> isMembersWrite  {{ permissions.isMembersWrite ? 'On' : 'Off'}}</td>
-                        <td>isMembersAdd {{ permissions.isMembersAdd ? 'On' : 'Off'}}</td>
+                        <td> isMembersRead <div class="wrapper-switch"><div class="switch">
+                                    <input name="1" type="checkbox" id="1" {{ (permissions.isMembersRead) ? 'checked' : ''}} data-id="{{  permissions.id }}" /> <!--toggle switch-->
+                                    <label for="1"></label>
+                                </div></div></td>
+                        <td> isMembersWrite  <div class="wrapper-switch"><div class="switch">
+                                    <input name="2" type="checkbox" id="2" {{ (permissions.isMembersWrite) ? 'checked' : ''}} data-id="{{  permissions.id }}" /> <!--toggle switch-->
+                                    <label for="2"></label>
+                                </div></div></td>
+                        <td>isMembersAdd <div class="wrapper-switch"><div class="switch">
+                                    <input name="3" type="checkbox" id="3" {{ (permissions.isMembersAdd) ? 'checked' : ''}} data-id="{{  permissions.id }}" /> <!--toggle switch-->
+                                    <label for="3"></label>
+                                </div></div></td>
                     </tr>
                     <tr>
-                        <td> isMembersProductsAdd {{ permissions.isMembersProductsAdd ? 'On' : 'Off'}}</td>
-                        <td> isMembersPaymentSchedulesRead {{ permissions.isMembersPaymentSchedulesRead ? 'On' : 'Off'}}</td>
-                        <td> isMembersStatistiquesRead {{ permissions.isMembersStatistiquesRead ? 'On' : 'Off'}}</td>
+                        <td> isMembersProductsAdd <div class="wrapper-switch"><div class="switch">
+                                    <input name="4" type="checkbox" id="4" {{ (permissions.isMembersProductsAdd) ? 'checked' : ''}} data-id="{{  permissions.id }}" /> <!--toggle switch-->
+                                    <label for="4"></label>
+                                </div></div></td>
+                        <td> isMembersPaymentSchedulesRead <div class="wrapper-switch"><div class="switch">
+                                    <input name="5" type="checkbox" id="5" {{ (permissions.isMembersPaymentSchedulesRead) ? 'checked' : ''}} data-id="{{  permissions.id }}" /> <!--toggle switch-->
+                                    <label for="5"></label>
+                                </div></div></td>
+                        <td> isMembersStatistiquesRead <div class="wrapper-switch"><div class="switch">
+                                    <input name="6" type="checkbox" id="6" {{ (permissions.isMembersStatistiquesRead) ? 'checked' : ''}} data-id="{{  permissions.id }}" /> <!--toggle switch-->
+                                    <label for="6"></label>
+                                </div></div></td>
                     <tr>
-                        <td> isMembersSubscriptionRead {{ permissions.isMembersSubscriptionRead ? 'On' : 'Off'}}</td>
-                        <td> isPaymentSchedulesRead {{ permissions.isPaymentSchedulesRead ? 'On' : 'Off'}}</td>
-                        <td> isPaymentSchedulesWrite  {{ permissions.isPaymentSchedulesWrite ? 'On' : 'Off'}}</td>
+                        <td> isMembersSubscriptionRead <div class="wrapper-switch"><div class="switch">
+                                    <input name="7" type="checkbox" id="7" {{ (permissions.isMembersSubscriptionRead) ? 'checked' : ''}} data-id="{{  permissions.id }}" /> <!--toggle switch-->
+                                    <label for="7"></label>
+                                </div></div></td>
+                        <td> isPaymentSchedulesRead <div class="wrapper-switch"><div class="switch">
+                                    <input name="8" type="checkbox" id="8" {{ (permissions.isPaymentSchedulesRead) ? 'checked' : ''}} data-id="{{  permissions.id }}" /> <!--toggle switch-->
+                                    <label for="8"></label>
+                                </div></div></td>
+                        <td> isPaymentSchedulesWrite  <div class="wrapper-switch"><div class="switch">
+                                    <input name="9" type="checkbox" id="9" {{ (permissions.isPaymentSchedulesWrite) ? 'checked' : ''}} data-id="{{  permissions.id }}" /> <!--toggle switch-->
+                                    <label for="9"></label>
+                                </div></div></td>
                     </tr>
                     <tr>
-                        <td> isPaymentDayRead {{ permissions.isPaymentDayRead ? 'On' : 'Off'}}</td>
+                        <td> isPaymentDayRead <div class="wrapper-switch"><div class="switch">
+                                    <input name="10" type="checkbox" id="10" {{ (permissions.isPaymentDayRead) ? 'checked' : ''}} data-id="{{  permissions.id }}" /> <!--toggle switch-->
+                                    <label for="10"></label>
+                                </div></div></td>
                     </tr>
                 {% endfor %}
 
@@ -65,3 +95,110 @@
 
     </div>
 {% endblock %}
+{% block javascripts %}
+    <script>
+        window.onload = () => {
+            let activate = document.querySelectorAll('[name="1"]');
+            for(let bouton of activate){
+                bouton.addEventListener("click", function(){
+                    let xmlhtpp = new XMLHttpRequest();
+
+                    xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission`)
+                    xmlhtpp.send();
+                })
+
+            }
+            let activate2 = document.querySelectorAll('[name="2"]');
+            for(let bouton2 of activate2){
+                bouton2.addEventListener("click", function(){
+                    let xmlhtpp = new XMLHttpRequest();
+
+                    xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission2`)
+                    xmlhtpp.send();
+                })
+
+            }
+            let activate3 = document.querySelectorAll('[name="3"]');
+            for(let bouton3 of activate3){
+                bouton3.addEventListener("click", function(){
+                    let xmlhtpp = new XMLHttpRequest();
+
+                    xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission3`)
+                    xmlhtpp.send();
+                })
+
+            }
+            let activate4 = document.querySelectorAll('[name="4"]');
+            for(let bouton4 of activate4){
+                bouton4.addEventListener("click", function(){
+                    let xmlhtpp = new XMLHttpRequest();
+
+                    xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission4`)
+                    xmlhtpp.send();
+                })
+
+            }
+            let activate5 = document.querySelectorAll('[name="5"]');
+            for(let bouton5 of activate5){
+                bouton5.addEventListener("click", function(){
+                    let xmlhtpp = new XMLHttpRequest();
+
+                    xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission5`)
+                    xmlhtpp.send();
+                })
+
+            }
+            let activate6 = document.querySelectorAll('[name="6"]');
+            for(let bouton6 of activate6){
+                bouton6.addEventListener("click", function(){
+                    let xmlhtpp = new XMLHttpRequest();
+
+                    xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission6`)
+                    xmlhtpp.send();
+                })
+
+            }
+            let activate7 = document.querySelectorAll('[name="7"]');
+            for(let bouton7 of activate7){
+                bouton7.addEventListener("click", function(){
+                    let xmlhtpp = new XMLHttpRequest();
+
+                    xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission7`)
+                    xmlhtpp.send();
+                })
+
+            }
+            let activate8 = document.querySelectorAll('[name="8"]');
+            for(let bouton8 of activate8){
+                bouton8.addEventListener("click", function(){
+                    let xmlhtpp = new XMLHttpRequest();
+
+                    xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission8`)
+                    xmlhtpp.send();
+                })
+
+            }
+            let activate9 = document.querySelectorAll('[name="9"]');
+            for(let bouton9 of activate2){
+                bouton9.addEventListener("click", function(){
+                    let xmlhtpp = new XMLHttpRequest();
+
+                    xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission9`)
+                    xmlhtpp.send();
+                })
+
+            }
+            let activate10 = document.querySelectorAll('[name="10"]');
+            for(let bouton10 of activate10){
+                bouton10.addEventListener("click", function(){
+                    let xmlhtpp = new XMLHttpRequest();
+
+                    xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission10`)
+                    xmlhtpp.send();
+                })
+
+            }
+        }
+    </script>
+{% endblock %}
+
