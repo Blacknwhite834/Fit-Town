@@ -447,6 +447,8 @@ class PartenaireController extends AbstractController
         ]);
 
 
+
+
         return $this->render('partenaire/show.html.twig', [
             'partenaire' => $partenaire,
             'permission'=>$partenairePermissionRepository->findBy(

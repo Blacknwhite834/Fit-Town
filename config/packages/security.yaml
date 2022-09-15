@@ -48,8 +48,9 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-         - { path: ^/homepage, roles: [ROLE_ADMIN, ROLE_PARTENAIRE, ROLE_STRUCTURE] }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/homepage, roles: [ROLE_ADMIN, ROLE_PARTENAIRE] },
+         - { path: ^/homepage-admin, roles: [ROLE_ADMIN] },
+         - { path: ^/homepage-structure, roles: ROLE_STRUCTURE }
     role_hierarchy:
         ROLE_ADMIN: [ ROLE_USER, ROLE_PARTENAIRE, ROLE_STRUCTURE ]
         ROLE_PARTENAIRE: ROLE_USER
