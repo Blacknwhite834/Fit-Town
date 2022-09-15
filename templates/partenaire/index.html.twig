@@ -9,19 +9,36 @@
 {% block body %}
     {{ block('homepageadmin', 'homepage_admin/index.html.twig') }}
     <div class="main">
+
+        <div class="wrapper-flex">
+<form action="{{ path('app_partenaire_index') }}">
+            <input
+                    type="search"
+                    name="p"
+                    class="form-control"
+                    placeholder="Rechercher..."
+                    aria-label="Search"
+            />
+</form>
+
+
         <div class="add-button" onclick="location.href='{{path('app_partenaire_new')}}';">
             <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_partenaire_new') }}">Ajouter</a>
         </div>
+        </div>
         <h1>Partenaires</h1>
         <h2>Liste des partenaires</h2>
+        <li><a>Actif</a></li>
+        <li><a>Inactif</a></li>
+
 
 
 
     <table class="table">
         <tbody>
         {% for partenaire in partenaires %}
-            <tr class="annonce" >
-                <td id="h3">Structures</td>
+            <tr class="annonce" onclick="location.href='{{path('app_partenaire_show', {'id': partenaire.id})}}';" >
+                <td id="h3">Partenaire</td>
                 <td id="name">{{ partenaire.Name }}</td>
                 <td>{{ partenaire.Description }}</td>
                 <td>{{ partenaire.email }}</td>
@@ -44,18 +61,25 @@
     </div>
 {% endblock %}
 {% block javascripts %}
+
     <script>
         window.onload = () => {
             let activate = document.querySelectorAll('[type="checkbox"]');
             for(let bouton of activate){
                 bouton.addEventListener("click", function(){
-                    let xmlhtpp = new XMLHttpRequest();
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
+                        let xmlhtpp = new XMLHttpRequest();
 
-                    xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate`)
-                    xmlhtpp.send();
+                        xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate`)
+                        xmlhtpp.send();
+                    } else {
+                        text = "You canceled!";
+                    }
                 })
 
             }
         }
+
     </script>
 {% endblock %}

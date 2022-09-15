@@ -380,6 +380,22 @@ class StructureController extends AbstractController
         return $this->redirectToRoute('app_partenaire_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    #[Route('/{id}/activate-permission11', name: 'app_structure_activate-permission11', methods: ['GET', 'POST'])]
+    public function activatePermission11(EntityManagerInterface $entityManager, Request $request, StructureRepository $structureRepository, MailerInterface $mailer): Response
+    {
+
+        $structure = $entityManager->getRepository(Structure::class)->findOneBy([ // get the id of the partenaire
+            'id' => $request->get('id')
+        ]);
+
+        $structure->setIsActive(($structure->isIsActive())?false:true); // set the value of the permission to the opposite of what it is ( for toggle switch )
+
+        $entityManager->persist($structure);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_partenaire_index', [], Response::HTTP_SEE_OTHER);
+    }
+
     #[Route('/{id}', name: 'app_structure_delete', methods: ['POST'])]
     public function delete(Request $request, Structure $structure, StructureRepository $structureRepository): Response
     {

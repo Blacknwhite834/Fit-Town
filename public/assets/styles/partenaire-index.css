@@ -74,6 +74,16 @@ tr.annonce {
     font-weight: bold;
 }
 
+.wrapper-flex {
+    display: flex;
+    float: right;
+    align-items: center;
+}
+
+.add-button {
+    float: none;
+}
+
 /----------------------/
 
 .wrapper-switch {

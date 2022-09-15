@@ -42,7 +42,7 @@
                 {% for permissions in permissions %}
                     <tr>
 
-                        <td> isMembersRead <div class="wrapper-switch"><div class="switch">
+                        {% if is_granted('ROLE_ADMIN') %}      <td> isMembersRead <div class="wrapper-switch"><div class="switch">
                                     <input name="1" type="checkbox" id="1" {{ (permissions.isMembersRead) ? 'checked' : ''}} data-id="{{  permissions.id }}" /> <!--toggle switch-->
                                     <label for="1"></label>
                                 </div></div></td>
@@ -88,6 +88,24 @@
                                     <label for="10"></label>
                                 </div></div></td>
                     </tr>
+                {%  else %} <tr>
+
+                    <td> isMembersRead {{ permissions.isMembersRead ? 'On' : 'Off'}}</td>
+                    <td> isMembersWrite  {{ permissions.isMembersWrite ? 'On' : 'Off'}}</td>
+                    <td>isMembersAdd {{ permissions.isMembersAdd ? 'On' : 'Off'}}</td>
+                </tr>
+                    <tr>
+                        <td> isMembersProductsAdd {{ permissions.isMembersProductsAdd ? 'On' : 'Off'}}</td>
+                        <td> isMembersPaymentSchedulesRead {{ permissions.isMembersPaymentSchedulesRead ? 'On' : 'Off'}}</td>
+                        <td> isMembersStatistiquesRead {{ permissions.isMembersStatistiquesRead ? 'On' : 'Off'}}</td>
+                    <tr>
+                        <td> isMembersSubscriptionRead {{ permissions.isMembersSubscriptionRead ? 'On' : 'Off'}}</td>
+                        <td> isPaymentSchedulesRead {{ permissions.isPaymentSchedulesRead ? 'On' : 'Off'}}</td>
+                        <td> isPaymentSchedulesWrite  {{ permissions.isPaymentSchedulesWrite ? 'On' : 'Off'}}</td>
+                    </tr>
+                    <tr>
+                        <td> isPaymentDayRead {{ permissions.isPaymentDayRead ? 'On' : 'Off'}}</td>
+                    </tr> {% endif %}
                 {% endfor %}
 
             </table>
@@ -101,100 +119,151 @@
             let activate = document.querySelectorAll('[name="1"]');
             for(let bouton of activate){
                 bouton.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();}
+                    else {
+                        bouton.checked = false;
+                    }
                 })
 
             }
             let activate2 = document.querySelectorAll('[name="2"]');
             for(let bouton2 of activate2){
                 bouton2.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission2`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();}
+            else {
+                    bouton2.checked = false;
+                }
                 })
 
             }
             let activate3 = document.querySelectorAll('[name="3"]');
             for(let bouton3 of activate3){
                 bouton3.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission3`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();}
+            else {
+                    bouton3.checked = false;
+                }
                 })
 
             }
             let activate4 = document.querySelectorAll('[name="4"]');
             for(let bouton4 of activate4){
                 bouton4.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission4`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();}
+            else {
+                    bouton4.checked = false;
+                }
                 })
 
             }
             let activate5 = document.querySelectorAll('[name="5"]');
             for(let bouton5 of activate5){
                 bouton5.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission5`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();}
+            else {
+                    bouton5.checked = false;
+                }
                 })
 
             }
             let activate6 = document.querySelectorAll('[name="6"]');
             for(let bouton6 of activate6){
                 bouton6.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission6`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();}
+            else {
+                    bouton6.checked = false;
+                }
                 })
 
             }
             let activate7 = document.querySelectorAll('[name="7"]');
             for(let bouton7 of activate7){
                 bouton7.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission7`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();}
+            else {
+                    bouton7.checked = false;
+                }
                 })
 
             }
             let activate8 = document.querySelectorAll('[name="8"]');
             for(let bouton8 of activate8){
                 bouton8.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission8`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();}
+            else {
+                    bouton8.checked = false;
+                }
                 })
 
             }
+
             let activate9 = document.querySelectorAll('[name="9"]');
-            for(let bouton9 of activate2){
+            for(let bouton9 of activate9){
                 bouton9.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission9`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();}
+            else {
+                    bouton9.checked = false;
+                }
                 })
 
             }
             let activate10 = document.querySelectorAll('[name="10"]');
             for(let bouton10 of activate10){
                 bouton10.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission10`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();}
+            else {
+                    bouton10.checked = false;
+                }
                 })
 
             }

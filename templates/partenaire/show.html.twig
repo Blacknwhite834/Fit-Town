@@ -121,6 +121,10 @@
                     <tr class="annonce" onclick="location.href='{{path('app_structure_show', {'id': structure.id})}}';">
                         <td id="h3">Structures</td>
                         <td id="h1">{{ structure.Adresse }}</td>
+                       <td><div class="wrapper-switch" style="display: flex; justify-content: center"><div class="switch">
+                                <input name="11" type="checkbox" id="11" {{ (structure.isActive) ? 'checked' : ''}} data-id="{{  structure.id }}" /> <!--toggle switch-->
+                                <label for="11"></label>
+                            </div></div></td>
                         <td><div id="img"><img src="{{ asset('assets/images/arrow.png')}}"/></div></td>
                     </tr>
                 {% else %}
@@ -144,100 +148,161 @@
             let activate = document.querySelectorAll('[name="1"]');
             for(let bouton of activate){
                 bouton.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate-permission`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();}
+            else {
+                    bouton.checked = false;
+                }
                 })
 
             }
             let activate2 = document.querySelectorAll('[name="2"]');
             for(let bouton2 of activate2){
                 bouton2.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate-permission2`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();}
+            else {
+                    bouton2.checked = false;
+                }
                 })
 
             }
             let activate3 = document.querySelectorAll('[name="3"]');
             for(let bouton3 of activate3){
                 bouton3.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate-permission3`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();}
+            else {
+                    bouton3.checked = false;
+                }
                 })
 
             }
             let activate4 = document.querySelectorAll('[name="4"]');
             for(let bouton4 of activate4){
                 bouton4.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate-permission4`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();}
+                    else {
+                        bouton4.checked = false;
+                    }
                 })
 
             }
             let activate5 = document.querySelectorAll('[name="5"]');
             for(let bouton5 of activate5){
                 bouton5.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate-permission5`)
-                    xmlhtpp.send();
+                    xmlhtpp.send(); }
+                    else {
+                            bouton5.checked = false;
+                        }
                 })
 
             }
             let activate6 = document.querySelectorAll('[name="6"]');
             for(let bouton6 of activate6){
                 bouton6.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate-permission6`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();} else {
+                            bouton6.checked = false;
+                        }
                 })
 
             }
             let activate7 = document.querySelectorAll('[name="7"]');
             for(let bouton7 of activate7){
                 bouton7.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate-permission7`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();} else {
+                        bouton7.checked = false;
+                    }
                 })
 
             }
             let activate8 = document.querySelectorAll('[name="8"]');
             for(let bouton8 of activate8){
                 bouton8.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate-permission8`)
-                    xmlhtpp.send();
+                    xmlhtpp.send(); } else {
+                            bouton8.checked = false;
+                        }
                 })
 
             }
             let activate9 = document.querySelectorAll('[name="9"]');
             for(let bouton9 of activate2){
                 bouton9.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate-permission9`)
-                    xmlhtpp.send();
+                    xmlhtpp.send();} else {
+                        bouton9.checked = false;
+                    }
                 })
 
             }
             let activate10 = document.querySelectorAll('[name="10"]');
             for(let bouton10 of activate10){
                 bouton10.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
                     let xmlhtpp = new XMLHttpRequest();
 
                     xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate-permission10`)
                     xmlhtpp.send();
+                    } else {
+                        bouton10.checked = false;
+                    }
+                })
+
+            }
+            let activate11 = document.querySelectorAll('[name="11"]');
+            for(let bouton11 of activate11){
+                bouton11.addEventListener("click", function(){
+                    let text = "Vous êtes sûr ?";
+                    if (confirm(text) == true) {
+                        let xmlhtpp = new XMLHttpRequest();
+
+                        xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission11`)
+                        xmlhtpp.send();
+                    } else {
+                        bouton11.checked = false;
+                    }
                 })
 
             }

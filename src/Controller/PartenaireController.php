@@ -26,15 +26,34 @@ class PartenaireController extends AbstractController
 {
 
     #[Route('/', name: 'app_partenaire_index', methods: ['GET'])]
-    public function index(PartenaireRepository $partenaireRepository): Response
+    public function index(PartenaireRepository $partenaireRepository, Request $request): Response
     {
         $getEmail = $this->getUser()->getEmail();
+        $search = $partenaireRepository->findOneBySomeField(
+            $request->query->get('p')
+        );
 
         return $this->render('partenaire/index.html.twig', [
-            'partenaires' => $partenaireRepository->findAll(),
+            'partenaires' => $search,
             'email'=>$getEmail,
+          // 'searchs' => $searchs,
         ]);
     }
+
+    /*#[Route('/browse/{slug}', name: 'app_partenaire_index', methods: ['GET'])]
+    public function browse(PartenaireRepository $partenaireRepository, Request $request): Response
+    {
+
+        $sort = $partenaireRepository->sort(
+            $request->query->get('q')
+        );
+
+        return $this->render('partenaire/index.html.twig', [
+            'partenaires' => $sort,
+         //   'email'=>$getEmail,
+            // 'searchs' => $searchs,
+        ]);
+    }*/
 
     #[Route('/{id}/activate', name: 'app_partenaire_activate', methods: ['GET', 'POST'])]
     public function activate(EntityManagerInterface $entityManager, Request $request, PartenaireRepository $partenaireRepository): Response

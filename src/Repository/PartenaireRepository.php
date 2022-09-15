@@ -56,6 +56,8 @@ class PartenaireRepository extends ServiceEntityRepository implements PasswordUp
         $this->add($user, true);
     }
 
+
+
 //    /**
 //     * @return Partenaire[] Returns an array of Partenaire objects
 //     */
@@ -69,15 +71,37 @@ class PartenaireRepository extends ServiceEntityRepository implements PasswordUp
 //            ->getQuery()
 //            ->getResult()
 //        ;
-//    }
+//    }!$partenaire->isIsActive()
 
-//    public function findOneBySomeField($value): ?Partenaire
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+   public function findOneBySomeField(string $search = null): array
+   {
+       $queryBuilder =  $this->createQueryBuilder('p')
+          ->orderBy('p.id', 'ASC');
+
+           if ($search) {
+               $queryBuilder->andWhere('p.Name LIKE :search')
+                   ->setParameter('search', '%'.$search.'%');
+           }
+
+           return $queryBuilder->getQuery()
+            ->getResult()
+        ;
+    }
+
+   /* public function sort(string $sort = null): array
+    {
+        $queryBuilder =  $this->createQueryBuilder('q')
+            ->orderBy('p.id', 'ASC');
+
+        if ($sort) {
+            $queryBuilder->andWhere('q.is_active = :sort')
+                ->setParameter('sort', $sort);
+        }
+
+        return $queryBuilder->getQuery()
+            ->getResult()
+            ;
+    }*/
+
+
 }

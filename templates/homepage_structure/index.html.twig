@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomepageStructureController!{% endblock %}
+{% block title %}Dashboard | Fit Town{% endblock %}
 {% block stylesheets %}
     <link href="{{ asset('assets/styles/homepage.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/styles/structure-show.css')}}" rel="stylesheet">
 {% endblock %}
 {% block body %}
     <div class="sidenav">
-        <img src="{{ asset('assets/images/logo.png')}}" alt="logo" class="logo" onclick="location.href='{{path('app_homepage')}}';">
+        <img src="{{ asset('assets/images/logo.png')}}" alt="logo" class="logo" onclick="location.href='{{path('app_homepage_structure')}}';">
         <div class="menu">
-            <li {% if app.request.attributes.get('_route') == 'app_homepage' %} class="active" {% endif %}> <a href="{{ path('app_homepage') }}" ><img src="{{ asset('assets/images/dashboard.png')}}"/>Dashboard</a></li>
+            <li {% if app.request.attributes.get('_route') == 'app_homepage_structure' %} class="active" {% endif %}> <a href="{{ path('app_homepage_structure') }}" ><img src="{{ asset('assets/images/dashboard.png')}}"/>Dashboard</a></li>
             <li {% if app.request.attributes.get('_route') == 'app_logout' %} class="active" {% endif %}>  <a href="{{ path('app_logout') }}"><img src="{{ asset('assets/images/logout.png')}}"/>Log out</a></li>
         </div>
         <div class="profile">
