@@ -5,7 +5,7 @@ html {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: white;
+    background: #111111;
     font-family: 'Raleway', sans-serif;
     scroll-behavior: smooth;
 }
@@ -20,7 +20,7 @@ tbody {
 
 
 .annonce {
-    background: #F7F8D5;
+    background: #242424;
     transition: 0.5s ease;
 
 }
@@ -30,9 +30,9 @@ tbody {
 }
 
 .annonce:last-child {
-    background: #F8DCDC;
-    transition: 0.5s ease;
+    background: #242424;
 }
+
 
 
 .annonce:hover {
@@ -42,34 +42,35 @@ tbody {
 
 .annonce td {
     display: block;
-    width: 450px;
 text-align: center;
 }
 
 tr.annonce {
     border-radius: 40px;
     margin: 0px 30px 20px 2px;
-    height: 250px;
+    width: 430px;
+    height: 310px;
     cursor: pointer;
 }
 
 .annonce #h3 {
-    text-align: left;
+    text-align: center;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 500;
     color: #5A5858;
-    padding: 20px;
+    margin-top: 60px;
+    padding: 0px;
 }
 
 .annonce #name {
     font-size: 25px;
     font-weight: bold;
     text-align: center;
-    color: black;
+    color: white;
 }
 
 .annonce td {
-    color: #5A5858;
+    color: #B6B6B6;
     font-size: 20px;
     font-weight: bold;
 }

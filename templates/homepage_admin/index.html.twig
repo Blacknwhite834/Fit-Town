@@ -23,6 +23,7 @@
          {% endblock%}
 <!-- Page content -->
 <div class="main">
+    <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2"/>
     <div class="add-button" onclick="location.href='{{path('app_partenaire_new')}}';">
         <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_partenaire_new') }}">Ajouter</a>
     </div>
@@ -60,9 +61,29 @@
             <h1>Voir plus...</h1>
             <div id="img2"><img src="{{ asset('assets/images/arrow.png')}}"/></div>
         </div>
+
+        <div class="card-single-2" onclick="location.href='{{path('app_partenaire_new')}}'">
+            <h3>Partenaire</h3>
+            <h1 id="title-new">Ajouter un<br> partenaire</h1>
+            <div id="img2"><img src="{{ asset('assets/images/arrow.png')}}"/></div>
+        </div>
+
     </div>
 
+<div class="wrapper-bottom">
+    <div class="wrapper-bottom-left">
+    <h1 id="title">Partenaires et structures</h1>
+    <h3 id="description">Nombre de partenaires et de structures</h3>
+    <div class="wrapper-data">
+        <div class="data"><h3>Partenaire</h3><p>3</p></div>
+        <div class="data"><h3>Structure</h3><p>7</p></div>
+    </div>
+    </div>
 
+    <div>
+        <img src="{{ asset('assets/images/metalic.jpg')}}"/>
+    </div>
+</div>
 
 </div>
 

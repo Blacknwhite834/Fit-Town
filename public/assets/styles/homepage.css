@@ -62,7 +62,7 @@ li {
     font-size: 20px;
     color: #5A5858;
     display: block;
-    font-weight: bold;
+    font-weight: 600;
     margin: 0 0 60px;
     padding-left: 70px;
 }
@@ -80,7 +80,7 @@ li {
 .profile h1 {
     font-weight: bold;
     font-size: 20px;
-    color: black;
+    color: white;
     text-align: center;
 }
 
@@ -90,6 +90,8 @@ li {
     color: #787878;
     text-align: center;
 }
+
+
 
 .main {
     margin-left: 330px;
@@ -101,7 +103,8 @@ li {
     color: white;
     font-weight: 600;
     font-size: 50px;
-
+    line-height: 30px;
+    margin-top: 40px;
 }
 
 .main h2 {
@@ -120,28 +123,23 @@ li {
     display: flex;
     width: 100%;
     height: 300px;
-    align-items: center
+    align-items: center;
+    margin-top: 60px;
 }
 
 .card-single {
-    height: 200px;
-    width: 400px;
-    background: #DBF1E3;
+    height: 290px;
+    width: 287px;
+    background: transparent linear-gradient(212deg, #687390 0%, #595249 100%) 0% 0% no-repeat padding-box;
     border-radius: 40px;
     transition: 0.5s ease;
     cursor: pointer;
+    margin: 0px 75px 0px 0px;
 }
 
 .card-single:hover {
     background: #b0b0b0;
 }
-
-
-
-
-
-
-
 
 tbody {
     display: flex;
@@ -153,9 +151,8 @@ tbody {
 
 
 .annonce {
-    background: grey;
+    background: transparent linear-gradient(211deg, #17917A 0%, #198E77 0%, #49412FDD 100%) 0% 0% no-repeat padding-box;
     transition: 0.5s ease;
-
 }
 
 .annonce:hover {
@@ -163,8 +160,9 @@ tbody {
 }
 
 .annonce:last-child {
-    background: grey;
+    background: transparent linear-gradient(221deg, #8D7270 0%, #5C5344 100%) 0% 0% no-repeat padding-box;
     transition: 0.5s ease;
+
 }
 
 
@@ -175,29 +173,33 @@ tbody {
 
 .annonce td {
     display: block;
-    width: 450px;
 
 }
 
 tr.annonce {
     border-radius: 40px;
-    margin: 0px 30px 20px 2px;
-    height: 200px;;
+    margin: 0px 75px 20px 2px;
+    height: 290px;
     cursor: pointer;
+    width: 287px;
 }
 
 .annonce #h1 {
-    font-size: 25px;
+    font-size: 33px;
     font-weight: bold;
     text-align: center;
+    line-height: 40px;
     padding: 15px 0;
+    color: white;
 }
 
 .annonce #h3 {
     font-size: 20px;
-    font-weight: bold;
-    color: #5A5858;
-    padding: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    margin-top: 80px;
+
 }
 
 #img {
@@ -207,18 +209,19 @@ tr.annonce {
 }
 
 .card-single h1{
-    font-size: 25px;
+    font-size: 33px;
     font-weight: bold;
     text-align: center;
-    padding: 30px 0;
-    line-height: 0;
+    line-height: 27px;
+    color: white;
 }
 
 .card-single h3{
     font-size: 20px;
-    font-weight: bold;
-    color: #5A5858;
-    margin-left: 20px;
+    font-weight: 500;
+    color: white;
+    margin-top: 80px;
+    text-align: center;
 }
 
 #img2 {
@@ -247,9 +250,18 @@ table.table {
 
 .wrapper-permission td {
     display: block;
-    color: black;
+    color: white;
     font-size: 18px;
     font-weight: bold;
     text-align: left;
     padding: 67px 0px 0px 0px;
 }
+
+.card-single-2 {
+    background: #242424;
+    width: 27%;
+    height: 290px;
+    border-radius: 40px;
+}
+
+

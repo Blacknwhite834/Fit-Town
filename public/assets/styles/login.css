@@ -56,12 +56,14 @@ form {
 .container-right h1 {
     font-size: 45px;
     color: white;
+    font-weight: 500;
     line-height: 0;
 }
 
 .container-right h2 {
     color: #8D8D8D;
     font-weight: 400;
+    font-size: 20px;
     margin-bottom: 40px;
 }
 
@@ -118,7 +120,7 @@ input[type=password]:focus {
     border-radius: 34px;
     width: 176px;
     height: 50px;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-weight: bold;
     -webkit-transition: all 0.5s ease-out;
     -moz-transition: all 0.5s ease-out;
