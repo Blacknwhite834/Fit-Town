@@ -5,20 +5,20 @@ html {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: white;
+    background: #111111;
     font-family: 'Raleway', sans-serif;
     scroll-behavior: smooth;
 }
 
 .wrapper-input {
-    margin: 0 auto;
+
     width: 500px;
     padding-top: 100px;
 }
 
 .wrapper-input input {
-    background: transparent;
-    border: 1px solid #5A5858;
+    background: #242424;
+    border: none;
     border-radius: 40px;
     width: 90%;
     height: 60px;
@@ -26,7 +26,7 @@ html {
 }
 
 input[type] {
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 26px;
     color: #8D8D8D;
     padding-left: 40px;

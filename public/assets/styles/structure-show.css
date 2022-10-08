@@ -5,7 +5,7 @@ html {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: white;
+    background: #111111;
     font-family: 'Raleway', sans-serif;
     scroll-behavior: smooth;
 }
@@ -14,7 +14,7 @@ html {
     width: 100%;
     height: 200px;
     margin-top: 50px;
-    background: #F7F8D5;
+    background: #242424;
     border-radius: 40px;
 }
 
@@ -38,7 +38,7 @@ html {
 .wrapper-1 table td {
     font-size: 30px;
     font-weight: bold;
-    color: black;
+    color: white;
 }
 
 table.table {
@@ -60,7 +60,7 @@ table.table {
 
 .wrapper-permission td {
     display: block;
-    color: black;
+    color: white;
     font-size: 18px;
     font-weight: bold;
     text-align: left;
@@ -70,6 +70,18 @@ table.table {
 
 #title-2 {
     margin-top: 70px;
+}
+
+
+.titles h1 {
+    font-size: 30px;
+}
+
+.titles h3 {
+    color: #8D8D8D;
+    font-size: 21px;
+    line-height: 0;
+    font-weight: 500;
 }
 
 /-------------------------------------/

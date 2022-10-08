@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomepageStructureController extends AbstractController
 {
-    #[Route('/homepage-structure', name: 'app_homepage_structure', methods: ['GET'])]
+    #[Route('/homepage-structure', name: 'app_homepage_structure', methods: ['GET', 'POST'])]
     public function index(StructurePermissionRepository $structurePermissionRepository, StructureRepository $structureRepository): Response
     {
         $getEmail = $this->getUser()->getEmail();
