@@ -138,15 +138,13 @@ html {
 .wrapper-bottom {
     display: flex;
     width: 100%;
-    justify-content: space-between;
 }
 
 .wrapper-bottom img {
     border-radius: 45px;
     height: 70%;
     width: auto;
-    margin-top: 50px;
-    /*margin: 0 0 0 100px;*/
+    margin: 36px 0px 0px 180px;
 }
 
 

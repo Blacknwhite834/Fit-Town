@@ -48,8 +48,10 @@ class StructurePermission
     #[ORM\JoinColumn(nullable: false)]
     private ?Structure $Structure = null;
 
-    #[ORM\OneToOne(inversedBy: 'structurePermission', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'structure_permission')]
     private ?PartenairePermission $partenaire_permission = null;
+
+
 
     public function getId(): ?int
     {
@@ -200,4 +202,6 @@ class StructurePermission
 
         return $this;
     }
+
+
 }

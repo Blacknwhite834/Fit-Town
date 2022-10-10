@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PartenairePermissionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PartenairePermissionRepository::class)]
@@ -47,8 +49,15 @@ class PartenairePermission
     #[ORM\JoinColumn(nullable: false)]
     private ?Partenaire $partenaire = null;
 
-    #[ORM\OneToOne(mappedBy: 'partenaire_permission', cascade: ['persist', 'remove'])]
-    private ?StructurePermission $structurePermission = null;
+    #[ORM\OneToMany(mappedBy: 'partenaire_permission', targetEntity: StructurePermission::class)]
+    private Collection $structure_permission;
+
+    public function __construct()
+    {
+        $this->structure_permission = new ArrayCollection();
+    }
+
+
 
 
 
@@ -190,27 +199,37 @@ class PartenairePermission
         return $this;
     }
 
-    public function getStructurePermission(): ?StructurePermission
+    /**
+     * @return Collection<int, StructurePermission>
+     */
+    public function getStructurePermission(): Collection
     {
-        return $this->structurePermission;
+        return $this->structure_permission;
     }
 
-    public function setStructurePermission(?StructurePermission $structurePermission): self
+    public function addStructurePermission(StructurePermission $structurePermission): self
     {
-        // unset the owning side of the relation if necessary
-        if ($structurePermission === null && $this->structurePermission !== null) {
-            $this->structurePermission->setPartenairePermission(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($structurePermission !== null && $structurePermission->getPartenairePermission() !== $this) {
+        if (!$this->structure_permission->contains($structurePermission)) {
+            $this->structure_permission->add($structurePermission);
             $structurePermission->setPartenairePermission($this);
         }
 
-        $this->structurePermission = $structurePermission;
+        return $this;
+    }
+
+    public function removeStructurePermission(StructurePermission $structurePermission): self
+    {
+        if ($this->structure_permission->removeElement($structurePermission)) {
+            // set the owning side to null (unless already changed)
+            if ($structurePermission->getPartenairePermission() === $this) {
+                $structurePermission->setPartenairePermission(null);
+            }
+        }
 
         return $this;
     }
+
+
 
 
 

@@ -439,12 +439,15 @@ class PartenaireController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_partenaire_show', methods: ['GET', 'POST'])]
-    public function show(Partenaire $partenaire, EntityManagerInterface $entityManager, Request $request, PartenairePermissionRepository $partenairePermissionRepository, StructureRepository $structureRepository): Response
+    public function show(Partenaire $partenaire, EntityManagerInterface $entityManager, PartenaireRepository $partenaireRepository,Request $request, PartenairePermissionRepository $partenairePermissionRepository, StructureRepository $structureRepository): Response
     {
         $getEmail = $this->getUser()->getEmail();
-        $partenaireId = $entityManager->getRepository(Partenaire::class)->findOneBy([ // get the newly created partenaire id
+        $partenaireId = $entityManager->getRepository(Partenaire::class)->findOneBy([
             'id' => $request->get('id')
         ]);
+       /* $search2 = $partenaireRepository->findOneBySomeField2(
+            $request->query->get('q')
+        );*/
 
 
 
@@ -455,7 +458,7 @@ class PartenaireController extends AbstractController
                 ['partenaire' => $partenaireId],
             ),
             'structures'=>$structureRepository->findBy(
-                ['is_active' => true, 'partenaire' => $partenaireId],
+                ['partenaire' => $partenaireId],
                 [],
             ),
             'email'=>$getEmail,

@@ -87,6 +87,21 @@ class PartenaireRepository extends ServiceEntityRepository implements PasswordUp
             ->getResult()
         ;
     }
+/*
+    public function findOneBySomeField2(string $search2 = null): array
+    {
+        $queryBuilder =  $this->createQueryBuilder('q')
+            ->orderBy('q.structures', 'ASC');
+
+        if ($search2) {
+            $queryBuilder->andWhere('q.structures LIKE :search')
+                ->setParameter('search', '%'.$search2.'%');
+        }
+
+        return $queryBuilder->getQuery()
+            ->getResult()
+            ;
+    }*/
 
    /* public function sort(string $sort = null): array
     {
