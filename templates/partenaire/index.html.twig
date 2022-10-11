@@ -11,8 +11,9 @@
     <div class="main">
 
         <div class="wrapper-flex">
-<form action="{{ path('app_partenaire_index') }}">
+<form action="{{ path('app_partenaire_index') }}" >
             <input
+                    id="search"
                     type="search"
                     name="p"
                     class="form-control"
@@ -28,23 +29,27 @@
         </div>
         <h1>Partenaires</h1>
         <h2>Liste des partenaires</h2>
-        <li><a>Actif</a></li>
-        <li><a>Inactif</a></li>
+        <div class="wrapper-sort">
+        <h3>Trier les éléments par :</h3>
+            <li><btn   id="all">All</btn></li>
+        <li><btn  id="active-btn">Actif</btn></li>
+        <li><btn  id="not-active-btn">Inactif</btn></li>
+        </div>
 
 
 
 
-    <table class="table">
-        <tbody>
+    <table class="table" >
+        <tbody  >
         {% for partenaire in partenaires %}
-            <tr class="annonce" onclick="location.href='{{path('app_partenaire_show', {'id': partenaire.id})}}';" >
+            <tr class="annonce {{ (partenaire.isActive) ? 'active-items' : 'not-active-items'}}"   >
                 <td id="h3">Partenaire</td>
                 <td id="name">{{ partenaire.Name }}</td>
                 <td>{{ partenaire.Description }}</td>
                 <td>{{ partenaire.email }}</td>
                 <td><div class="wrapper-switch"><div class="switch">
-                    <input type="checkbox" id="toggleAll" {{ (partenaire.isActive) ? 'checked' : ''}} data-id="{{  partenaire.id }}" /> <!--toggle switch-->
-                    <label for="toggleAll"></label>
+                    <input  type="checkbox"  id="toggleAll{{partenaire.id}}" {{ (partenaire.isActive) ? 'checked' : ''}} data-id="{{  partenaire.id }}" /> <!--toggle switch-->
+                    <label for="toggleAll{{partenaire.id}}"></label>
                 </div></div></td>
                 <td>
                     <a href="{{ path('app_partenaire_edit', {'id': partenaire.id}) }}">edit</a>
@@ -61,8 +66,56 @@
     </div>
 {% endblock %}
 {% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script>
+        // Filter list script :
+        jQuery(document).ready(function(){
+            $('#active-btn').click(function(){
+                $('.not-active-items').hide();
+                $('.active-items').show();
+            });
+            $('#not-active-btn').click(function(){
+                $('.active-items').hide();
+                $('.not-active-items').show();
+            });
+            $('#all').click(function(){
+                $('.active-items').show();
+                $('.not-active-items').show();
+            });
+        });
+        // Live search script :
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#search").keyup(function(){
+                var minlength = 1;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $(".annonce");
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('app_partenaire_index') }}",
+                        data: {
+                            'p' : value
+                        },
+                        dataType: "text",
+                        success: function(result){
+                            //we need to check if the value is the same
+                            if (value===$(that).val()) {
+                                entitySelector.hide();
+                                $(result).find(".annonce").appendTo('.table');
+
+                            }
+                        }
+                    });
+                }
+            });
+
+        })
+        // Toggle switch script :
         window.onload = () => {
             let activate = document.querySelectorAll('[type="checkbox"]');
             for(let bouton of activate){

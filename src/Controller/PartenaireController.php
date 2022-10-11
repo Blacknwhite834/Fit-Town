@@ -445,9 +445,9 @@ class PartenaireController extends AbstractController
         $partenaireId = $entityManager->getRepository(Partenaire::class)->findOneBy([
             'id' => $request->get('id')
         ]);
-       /* $search2 = $partenaireRepository->findOneBySomeField2(
+        $search2 = $structureRepository->findOneBySomeField2(
             $request->query->get('q')
-        );*/
+        );
 
 
 
@@ -457,10 +457,12 @@ class PartenaireController extends AbstractController
             'permission'=>$partenairePermissionRepository->findBy(
                 ['partenaire' => $partenaireId],
             ),
-            'structures'=>$structureRepository->findBy(
+          'structures'=>$search2,
+
+          /*  'structures'=>$structureRepository->findBy(
                 ['partenaire' => $partenaireId],
                 [],
-            ),
+            ),*/
             'email'=>$getEmail,
         ]);
     }
