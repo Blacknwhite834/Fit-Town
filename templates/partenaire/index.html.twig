@@ -40,9 +40,9 @@
 
 
     <table class="table" >
-        <tbody  >
+        <tbody>
         {% for partenaire in partenaires %}
-            <tr class="annonce {{ (partenaire.isActive) ? 'active-items' : 'not-active-items'}}"   >
+            <tr class="annonce {{ (partenaire.isActive) ? 'active-items' : 'not-active-items'}}"   onclick="location.href='{{path('app_partenaire_show', {'id': partenaire.id})}}';">
                 <td id="h3">Partenaire</td>
                 <td id="name">{{ partenaire.Name }}</td>
                 <td>{{ partenaire.Description }}</td>

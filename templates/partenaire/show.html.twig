@@ -116,8 +116,9 @@
         <h1>Structures</h1>
         <h3>Structure(s) du partenaire</h3>
     </div>
-    <form>
+    <form action="{{ path('app_partenaire_show', {'id': partenaire.id}) }}">
         <input
+                id="search"
                 type="search"
                 name="q"
                 class="form-control"
@@ -125,19 +126,25 @@
                 aria-label="Search"
         />
     </form>
+    <div class="wrapper-sort">
+        <h3>Trier les éléments par :</h3>
+        <li><btn   id="all">All</btn></li>
+        <li><btn  id="active-btn">Actif</btn></li>
+        <li><btn  id="not-active-btn">Inactif</btn></li>
+    </div>
     <div class="cards">
 
 
         <div>
-            <table>
+            <table class="table-structure">
                 <tbody>
                 {% for structure in structures %}
-                    <tr class="annonce" onclick="location.href='{{path('app_structure_show', {'id': structure.id})}}';">
+                    <tr class="annonce {{ (structure.isActive) ? 'active-items' : 'not-active-items'}}" onclick="location.href='{{path('app_structure_show', {'id': structure.id})}}';">
                         <td id="h3">Structures</td>
                         <td id="h1">{{ structure.Adresse }}</td>
                        <td><div class="wrapper-switch" style="display: flex; justify-content: center"><div class="switch">
-                                <input name="11" type="checkbox" id="11" {{ (structure.isActive) ? 'checked' : ''}} data-id="{{  structure.id }}" /> <!--toggle switch-->
-                                <label for="11"></label>
+                                <input name="11" type="checkbox" id="toggleAll{{ structure.id }}" {{ (structure.isActive) ? 'checked' : ''}} data-id="{{  structure.id }}" /> <!--toggle switch-->
+                                <label for="toggleAll{{ structure.id }}"></label>
                             </div></div></td>
                         <td><div id="img"><img src="{{ asset('assets/images/arrow.png')}}"/></div></td>
                     </tr>
@@ -157,7 +164,54 @@
 </div>
 {% endblock %}
 {% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
+        // Filter list script :
+        jQuery(document).ready(function(){
+            $('#active-btn').click(function(){
+                $('.not-active-items').hide();
+                $('.active-items').show();
+            });
+            $('#not-active-btn').click(function(){
+                $('.active-items').hide();
+                $('.not-active-items').show();
+            });
+            $('#all').click(function(){
+                $('.active-items').show();
+                $('.not-active-items').show();
+            });
+        });
+        // Live search script :
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#search").keyup(function(){
+                var minlength = 1;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $(".annonce");
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('app_partenaire_show', {'id': partenaire.id}) }}",
+                        data: {
+                            'q' : value
+                        },
+                        dataType: "text",
+                        success: function(result){
+                            //we need to check if the value is the same
+                            if (value===$(that).val()) {
+                                entitySelector.hide();
+                                $(result).find(".annonce").appendTo('.table-structure');
+
+                            }
+                        }
+                    });
+                }
+            });
+
+        })
         window.onload = () => {
             let activate = document.querySelectorAll('[name="1"]');
             for(let bouton of activate){

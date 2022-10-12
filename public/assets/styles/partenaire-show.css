@@ -84,7 +84,24 @@ table.table {
     font-weight: 500;
 }
 
+.wrapper-sort h3 {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    margin-top: 60px;
+    padding: 0px;
+}
 
+.wrapper-sort btn {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    margin-top: 60px;
+    padding: 0px;
+    cursor: pointer;
+}
 
 /----------------------/
 
