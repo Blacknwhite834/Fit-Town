@@ -88,10 +88,11 @@
         jQuery(document).ready(function() {
             var searchRequest = null;
             $("#search").keyup(function(){
+
                 var minlength = 1;
                 var that = this;
                 var value = $(this).val();
-                var entitySelector = $(".annonce");
+                var entitySelector = $(".table");
                 if (value.length >= minlength ) {
                     if (searchRequest != null)
                         searchRequest.abort();
@@ -104,9 +105,11 @@
                         dataType: "text",
                         success: function(result){
                             //we need to check if the value is the same
-                            if (value===$(that).val()) {
-                                entitySelector.hide();
-                                $(result).find(".annonce").appendTo('.table');
+                            if (value===$(that).val()){
+                             //   entitySelector.hide(); // method 1 works but problem with the pagination and the sort buttons
+                             //   $(result).find(".annonce").appendTo('.table'); // method 1
+                               entitySelector.html(result); // method 2
+
 
                             }
                         }
@@ -127,7 +130,7 @@
                         xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate`)
                         xmlhtpp.send();
                     } else {
-                        text = "You canceled!";
+                        bouton.checked = !bouton.checked;
                     }
                 })
 

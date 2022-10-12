@@ -85,6 +85,7 @@ class PartenaireController extends AbstractController
 
         $partenairePermission->getStructurePermission()->setIsMembersRead($partenairePermission->isIsMembersRead());
 
+
         $entityManager->persist($partenairePermission);
         $entityManager->flush();
 
