@@ -40,21 +40,6 @@ class PartenaireController extends AbstractController
         ]);
     }
 
-    /*#[Route('/browse/{slug}', name: 'app_partenaire_index', methods: ['GET'])]
-    public function browse(PartenaireRepository $partenaireRepository, Request $request): Response
-    {
-
-        $sort = $partenaireRepository->sort(
-            $request->query->get('q')
-        );
-
-        return $this->render('partenaire/index.html.twig', [
-            'partenaires' => $sort,
-         //   'email'=>$getEmail,
-            // 'searchs' => $searchs,
-        ]);
-    }*/
-
     #[Route('/{id}/activate', name: 'app_partenaire_activate', methods: ['GET', 'POST'])]
     public function activate(EntityManagerInterface $entityManager, Request $request, PartenaireRepository $partenaireRepository): Response
     {
@@ -177,8 +162,11 @@ class PartenaireController extends AbstractController
 
 
         $partenairePermission->setIsMembersProductsAdd(($partenairePermission->isIsMembersProductsAdd())?false:true); // set the value of the permission to the opposite of what it is ( for toggle switch )
-        $partenairePermission->getStructurePermission()->setIsMembersProductsAdd($partenairePermission->isIsMembersProductsAdd());
+        $structurePermission = $partenairePermission->getPermissionStructure();
 
+        foreach ($structurePermission as $structurePermission) {
+            $structurePermission->setIsMembersProductsAdd($partenairePermission->isIsMembersProductsAdd());
+        }
 
 
         // $partenaire->setIsActive(($partenaire->isIsActive())?false:true); // set the value of the partenaire to the opposite of what it is ( for toggle switch )
@@ -204,8 +192,11 @@ class PartenaireController extends AbstractController
 
 
         $partenairePermission->setIsMembersPaymentSchedulesRead(($partenairePermission->isIsMembersPaymentSchedulesRead())?false:true); // set the value of the permission to the opposite of what it is ( for toggle switch )
-        $partenairePermission->getStructurePermission()->setIsMembersPaymentSchedulesRead($partenairePermission->isIsMembersPaymentSchedulesRead());
+        $structurePermission = $partenairePermission->getPermissionStructure();
 
+        foreach ($structurePermission as $structurePermission) {
+            $structurePermission->setIsMembersPaymentSchedulesRead($partenairePermission->isIsMembersPaymentSchedulesRead());
+        }
 
 
         // $partenaire->setIsActive(($partenaire->isIsActive())?false:true); // set the value of the partenaire to the opposite of what it is ( for toggle switch )
@@ -231,8 +222,11 @@ class PartenaireController extends AbstractController
 
 
         $partenairePermission->setIsMembersStatistiquesRead(($partenairePermission->isIsMembersStatistiquesRead())?false:true); // set the value of the permission to the opposite of what it is ( for toggle switch )
-        $partenairePermission->getStructurePermission()->setIsMembersStatistiquesRead($partenairePermission->isIsMembersStatistiquesRead());
+        $structurePermission = $partenairePermission->getPermissionStructure();
 
+        foreach ($structurePermission as $structurePermission) {
+            $structurePermission->setIsMembersStatistiquesRead($partenairePermission->isIsMembersStatistiquesRead());
+        }
 
 
         // $partenaire->setIsActive(($partenaire->isIsActive())?false:true); // set the value of the partenaire to the opposite of what it is ( for toggle switch )
@@ -258,8 +252,11 @@ class PartenaireController extends AbstractController
 
 
         $partenairePermission->setIsMembersSubscriptionRead(($partenairePermission->isIsMembersSubscriptionRead())?false:true); // set the value of the permission to the opposite of what it is ( for toggle switch )
-        $partenairePermission->getPermissionStructure()->setIsMembersSubscriptionRead($partenairePermission->isIsMembersSubscriptionRead());
+        $structurePermission = $partenairePermission->getPermissionStructure();
 
+        foreach ($structurePermission as $structurePermission) {
+            $structurePermission->setIsMembersSubscriptionRead($partenairePermission->isIsMembersSubscriptionRead());
+        }
 
 
 
@@ -314,8 +311,11 @@ class PartenaireController extends AbstractController
 
 
         $partenairePermission->setIsPaymentSchedulesWrite(($partenairePermission->isIsPaymentSchedulesWrite())?false:true); // set the value of the permission to the opposite of what it is ( for toggle switch )
-        $partenairePermission->getStructurePermission()->setIsPaymentSchedulesWrite($partenairePermission->isIsPaymentSchedulesWrite());
+        $structurePermission = $partenairePermission->getPermissionStructure();
 
+        foreach ($structurePermission as $structurePermission) {
+            $structurePermission->setIsPaymentSchedulesWrite($partenairePermission->isIsPaymentSchedulesWrite());
+        }
 
 
 
@@ -343,8 +343,11 @@ class PartenaireController extends AbstractController
 
 
           $partenairePermission->setIsPaymentDayRead(($partenairePermission->isIsPaymentDayRead())?false:true); // set the value of the permission to the opposite of what it is ( for toggle switch )
-        $partenairePermission->getStructurePermission()->setIsPaymentDayRead($partenairePermission->isIsPaymentDayRead());
+        $structurePermission = $partenairePermission->getPermissionStructure();
 
+        foreach ($structurePermission as $structurePermission) {
+            $structurePermission->setIsPaymentDayRead($partenairePermission->isIsPaymentDayRead());
+        }
 
 
 
