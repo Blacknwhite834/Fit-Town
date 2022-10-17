@@ -77,7 +77,7 @@ class StructureController extends AbstractController
             $structurePermission->setIsPaymentSchedulesWrite($partenaire->getPartenairePermission()->isIsPaymentSchedulesWrite());
             $structurePermission->setIsPaymentDayRead($partenaire->getPartenairePermission()->isIsPaymentDayRead());
 
-            $structurePermission->setPartenairePermission($partenaire->getPartenairePermission());
+            $structurePermission->setPermissionPartenaire($partenaire->getPartenairePermission());
 
 
 

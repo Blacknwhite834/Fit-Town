@@ -48,8 +48,11 @@ class StructurePermission
     #[ORM\JoinColumn(nullable: false)]
     private ?Structure $Structure = null;
 
-    #[ORM\ManyToOne(inversedBy: 'structure_permission')]
-    private ?PartenairePermission $partenaire_permission = null;
+    #[ORM\ManyToOne(targetEntity: PartenairePermission::class, fetch: "EAGER", inversedBy: 'permission_structure')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?PartenairePermission $permission_partenaire = null;
+
+
 
 
 
@@ -191,17 +194,19 @@ class StructurePermission
         return $this;
     }
 
-    public function getPartenairePermission(): ?PartenairePermission
+    public function getPermissionPartenaire(): ?PartenairePermission
     {
-        return $this->partenaire_permission;
+        return $this->permission_partenaire;
     }
 
-    public function setPartenairePermission(?PartenairePermission $partenaire_permission): self
+    public function setPermissionPartenaire(?PartenairePermission $permission_partenaire): self
     {
-        $this->partenaire_permission = $partenaire_permission;
+        $this->permission_partenaire = $permission_partenaire;
 
         return $this;
     }
+
+
 
 
 }

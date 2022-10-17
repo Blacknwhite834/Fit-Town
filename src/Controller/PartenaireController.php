@@ -78,13 +78,17 @@ class PartenaireController extends AbstractController
     {
 
         $partenairePermission = $entityManager->getRepository(PartenairePermission::class)->findOneBy([ // get the id of the partenaire
-            'id' => $request->get('id')
+            'id' => $request->get('id'),
         ]);
+
 
         $partenairePermission->setIsMembersRead(!$partenairePermission->isIsMembersRead()); // set the value of the permission to the opposite of what it is ( for toggle switch )
 
-        $partenairePermission->getStructurePermission()->setIsMembersRead($partenairePermission->isIsMembersRead());
+        $structurePermission = $partenairePermission->getPermissionStructure();
 
+        foreach ($structurePermission as $structurePermission) {
+            $structurePermission->setIsMembersRead($partenairePermission->isIsMembersRead());
+        }
 
         $entityManager->persist($partenairePermission);
         $entityManager->flush();
@@ -108,8 +112,14 @@ class PartenaireController extends AbstractController
         ]);
 
 
-         $partenairePermission->setIsMembersWrite(($partenairePermission->isIsMembersWrite())?false:true); // set the value of the permission to the opposite of what it is ( for toggle switch )
-        $partenairePermission->getStructurePermission()->setIsMembersWrite($partenairePermission->isIsMembersWrite());
+         $partenairePermission->setIsMembersWrite(!$partenairePermission->isIsMembersWrite()); // set the value of the permission to the opposite of what it is ( for toggle switch )
+
+
+        $structurePermission = $partenairePermission->getPermissionStructure();
+
+        foreach ($structurePermission as $structurePermission) {
+            $structurePermission->setIsMembersWrite($partenairePermission->isIsMembersWrite());
+        }
 
         $entityManager->persist($partenairePermission);
         $entityManager->flush();
@@ -134,8 +144,12 @@ class PartenaireController extends AbstractController
 
 
 
-         $partenairePermission->setIsMembersAdd(($partenairePermission->isIsMembersAdd())?false:true); // set the value of the permission to the opposite of what it is ( for toggle switch )
-        $partenairePermission->getStructurePermission()->setIsMembersAdd($partenairePermission->isIsMembersAdd());
+         $partenairePermission->setIsMembersAdd(!$partenairePermission->isIsMembersAdd()); // set the value of the permission to the opposite of what it is ( for toggle switch )
+        $structurePermission = $partenairePermission->getPermissionStructure();
+
+        foreach ($structurePermission as $structurePermission) {
+            $structurePermission->setIsMembersAdd($partenairePermission->isIsMembersAdd());
+        }
 
 
 
@@ -244,7 +258,7 @@ class PartenaireController extends AbstractController
 
 
         $partenairePermission->setIsMembersSubscriptionRead(($partenairePermission->isIsMembersSubscriptionRead())?false:true); // set the value of the permission to the opposite of what it is ( for toggle switch )
-        $partenairePermission->getStructurePermission()->setIsMembersSubscriptionRead($partenairePermission->isIsMembersSubscriptionRead());
+        $partenairePermission->getPermissionStructure()->setIsMembersSubscriptionRead($partenairePermission->isIsMembersSubscriptionRead());
 
 
 
@@ -330,6 +344,8 @@ class PartenaireController extends AbstractController
 
           $partenairePermission->setIsPaymentDayRead(($partenairePermission->isIsPaymentDayRead())?false:true); // set the value of the permission to the opposite of what it is ( for toggle switch )
         $partenairePermission->getStructurePermission()->setIsPaymentDayRead($partenairePermission->isIsPaymentDayRead());
+
+
 
 
 
@@ -426,8 +442,10 @@ class PartenaireController extends AbstractController
 
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $partenairePermission->setPartenaire($partenaire);
             $entityManager->persist($partenairePermission);
+            $entityManager->persist($partenaire);
             $entityManager->flush();
             return $this->redirectToRoute('app_partenaire_index', [], Response::HTTP_SEE_OTHER);
         }

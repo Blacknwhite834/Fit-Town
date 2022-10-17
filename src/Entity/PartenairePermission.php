@@ -49,16 +49,14 @@ class PartenairePermission
     #[ORM\JoinColumn(nullable: false)]
     private ?Partenaire $partenaire = null;
 
-    #[ORM\OneToMany(mappedBy: 'partenaire_permission', targetEntity: StructurePermission::class)]
-    private Collection $structure_permission;
+    #[ORM\OneToMany(mappedBy: 'permission_partenaire', targetEntity: StructurePermission::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
+    #[ORM\JoinColumn(nullable: false)]
+    private Collection $permission_structure;
 
     public function __construct()
     {
-        $this->structure_permission = new ArrayCollection();
+        $this->permission_structure = new ArrayCollection();
     }
-
-
-
 
 
 
@@ -202,32 +200,34 @@ class PartenairePermission
     /**
      * @return Collection<int, StructurePermission>
      */
-    public function getStructurePermission(): Collection
+    public function getPermissionStructure(): Collection
     {
-        return $this->structure_permission;
+        return $this->permission_structure;
     }
 
-    public function addStructurePermission(StructurePermission $structurePermission): self
+    public function addPermissionStructure(StructurePermission $permissionStructure): self
     {
-        if (!$this->structure_permission->contains($structurePermission)) {
-            $this->structure_permission->add($structurePermission);
-            $structurePermission->setPartenairePermission($this);
+        if (!$this->permission_structure->contains($permissionStructure)) {
+            $this->permission_structure->add($permissionStructure);
+            $permissionStructure->setPermissionPartenaire($this);
         }
 
         return $this;
     }
 
-    public function removeStructurePermission(StructurePermission $structurePermission): self
+    public function removePermissionStructure(StructurePermission $permissionStructure): self
     {
-        if ($this->structure_permission->removeElement($structurePermission)) {
+        if ($this->permission_structure->removeElement($permissionStructure)) {
             // set the owning side to null (unless already changed)
-            if ($structurePermission->getPartenairePermission() === $this) {
-                $structurePermission->setPartenairePermission(null);
+            if ($permissionStructure->getPermissionPartenaire() === $this) {
+                $permissionStructure->setPermissionPartenaire(null);
             }
         }
 
         return $this;
     }
+
+
 
 
 
