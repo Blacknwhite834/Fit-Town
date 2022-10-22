@@ -188,7 +188,7 @@
                 var minlength = 1;
                 var that = this;
                 var value = $(this).val();
-                var entitySelector = $(".annonce");
+                var entitySelector = $(".table-structure");
                 if (value.length >= minlength ) {
                     if (searchRequest != null)
                         searchRequest.abort();
@@ -202,8 +202,8 @@
                         success: function(result){
                             //we need to check if the value is the same
                             if (value===$(that).val()) {
-                                entitySelector.hide();
-                                $(result).find(".annonce").appendTo('.table-structure');
+
+                                entitySelector.html($(result).find(".table-structure"));
 
                             }
                         }

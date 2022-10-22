@@ -59,11 +59,13 @@ class StructureRepository extends ServiceEntityRepository implements PasswordUpg
     public function findOneBySomeField2(string $search2 = null): array
     {
         $queryBuilder =  $this->createQueryBuilder('q')
-            ->orderBy('q.id', 'ASC');
+            ->orderBy('q.partenaire' , 'ASC');
+
 
         if ($search2) {
             $queryBuilder->andWhere('q.Adresse LIKE :search')
                 ->setParameter('search', '%'.$search2.'%');
+
         }
 
         return $queryBuilder->getQuery()

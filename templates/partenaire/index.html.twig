@@ -29,6 +29,7 @@
         </div>
         <h1>Partenaires</h1>
         <h2>Liste des partenaires</h2>
+        <a>Retour </a>
         <div class="wrapper-sort">
         <h3>Trier les éléments par :</h3>
             <li><btn   id="all">All</btn></li>
@@ -108,7 +109,9 @@
                             if (value===$(that).val()){
                              //   entitySelector.hide(); // method 1 works but problem with the pagination and the sort buttons
                              //   $(result).find(".annonce").appendTo('.table'); // method 1
-                               entitySelector.html(result); // method 2
+                            //   entitySelector.html(result); // method 2
+                                entitySelector.html($(result).find(".table")); // method 3
+
 
 
                             }
@@ -124,7 +127,7 @@
             for(let bouton of activate){
                 bouton.addEventListener("click", function(){
                     let text = "Vous êtes sûr ?";
-                    if (confirm(text) == true) {
+                    if (confirm(text) === true) {
                         let xmlhtpp = new XMLHttpRequest();
 
                         xmlhtpp.open("get", `/partenaire/${this.dataset.id}/activate`)
