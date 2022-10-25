@@ -467,21 +467,20 @@ class PartenaireController extends AbstractController
         $partenaireId = $entityManager->getRepository(Partenaire::class)->findOneBy([
             'id' => $request->get('id')
         ]);
+
         $search2 = $structureRepository->findOneBySomeField2(
+            $partenaire,
             $request->query->get('q')
         );
-
-
-
 
         return $this->render('partenaire/show.html.twig', [
             'partenaire' => $partenaire,
             'permission'=>$partenairePermissionRepository->findBy(
                 ['partenaire' => $partenaireId],
             ),
-          'structures'=>$search2,
+            'structures' => $search2,
 
-          /*  'structures'=>$structureRepository->findBy(
+          /*  'structures'=>$structureRepository->findBy( // show the structure linked to the partenaire but doesn't work with the search
                 ['partenaire' => $partenaireId],
                 [],
             ),*/

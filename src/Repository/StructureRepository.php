@@ -2,9 +2,13 @@
 
 namespace App\Repository;
 
+use App\Entity\Partenaire;
 use App\Entity\Structure;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bundle\MakerBundle\Str;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -56,16 +60,16 @@ class StructureRepository extends ServiceEntityRepository implements PasswordUpg
         $this->add($user, true);
     }
 
-    public function findOneBySomeField2(string $search2 = null): array
+    public function findOneBySomeField2(Partenaire $partenaire, string $search2 = null): array
     {
         $queryBuilder =  $this->createQueryBuilder('q')
-            ->orderBy('q.partenaire' , 'ASC');
+            ->andWhere('q.partenaire = :partenaire')
+            ->setParameter('partenaire', $partenaire)
+            ->orderBy('q.id' , 'ASC');
 
-
-        if ($search2) {
+        if (null !== $search2) {
             $queryBuilder->andWhere('q.Adresse LIKE :search')
                 ->setParameter('search', '%'.$search2.'%');
-
         }
 
         return $queryBuilder->getQuery()
