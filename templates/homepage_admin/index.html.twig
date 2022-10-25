@@ -81,10 +81,48 @@
     </div>
 
     <div>
-        <img src="{{ asset('assets/images/metalic.jpg')}}"/>
+     <!--   <img src="{{ asset('assets/images/metalic.jpg')}}"/>-->
+        <div><canvas id="categories" height="300" width="500"></canvas></div>
+        <script>
+            const categories = document.querySelector("#categories");
+            const myChart = new Chart(categories, {
+                type: 'bar',
+                data: {
+                    labels: ['Partenaire', 'Structure'],
+                    datasets: [{
+                        label: 'Nombre de partenaires et de structures',
+                        data: [{{ numberPartenaire }}, {{ numberStructure }}],
+                        backgroundColor: [
+                            '#242424',
+                            '#242424',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                        ],
+
+
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+
     </div>
 </div>
 
 </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 
 {% endblock %}
