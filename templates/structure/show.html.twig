@@ -8,6 +8,11 @@
 {% block body %}
      {{ block('homepage', 'homepage/index.html.twig') }}
     <div class="main">
+        {% if is_granted('ROLE_ADMIN') %}
+        <div class="add-button" onclick="location.href='{{path('app_partenaire_new')}}';">
+            <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_partenaire_new') }}">Ajouter</a>
+        </div>
+        {% endif %}
     <h1>Structure</h1>
         <h2>Structure de ce partenaire </h2>
 
@@ -129,7 +134,7 @@
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission`)
                     xmlhtpp.send();}
                     else {
-                        bouton.checked = false;
+                        bouton.checked = !bouton.checked;
                     }
                 })
 
@@ -144,7 +149,7 @@
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission2`)
                     xmlhtpp.send();}
             else {
-                    bouton2.checked = false;
+                    bouton2.checked = !bouton.checked;
                 }
                 })
 
@@ -159,7 +164,7 @@
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission3`)
                     xmlhtpp.send();}
             else {
-                    bouton3.checked = false;
+                    bouton3.checked = !bouton.checked;
                 }
                 })
 
@@ -174,7 +179,7 @@
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission4`)
                     xmlhtpp.send();}
             else {
-                    bouton4.checked = false;
+                    bouton4.checked = !bouton.checked;
                 }
                 })
 
@@ -189,7 +194,7 @@
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission5`)
                     xmlhtpp.send();}
             else {
-                    bouton5.checked = false;
+                    bouton5.checked = !bouton.checked;
                 }
                 })
 
@@ -204,7 +209,7 @@
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission6`)
                     xmlhtpp.send();}
             else {
-                    bouton6.checked = false;
+                    bouton6.checked = !bouton.checked;
                 }
                 })
 
@@ -219,7 +224,7 @@
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission7`)
                     xmlhtpp.send();}
             else {
-                    bouton7.checked = false;
+                    bouton7.checked = !bouton.checked;
                 }
                 })
 
@@ -234,7 +239,7 @@
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission8`)
                     xmlhtpp.send();}
             else {
-                    bouton8.checked = false;
+                    bouton8.checked = !bouton.checked;
                 }
                 })
 
@@ -250,7 +255,7 @@
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission9`)
                     xmlhtpp.send();}
             else {
-                    bouton9.checked = false;
+                    bouton9.checked = !bouton.checked;
                 }
                 })
 
@@ -265,7 +270,7 @@
                     xmlhtpp.open("get", `/structure/${this.dataset.id}/activate-permission10`)
                     xmlhtpp.send();}
             else {
-                    bouton10.checked = false;
+                    bouton10.checked = !bouton.checked;
                 }
                 })
 

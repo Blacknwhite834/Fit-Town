@@ -112,7 +112,7 @@ class StructureController extends AbstractController
                 ->subject('Une nouvelle structure a été ajoutée !')
                 ->text("Bonjour, une nouvelle structure a été ajoutée. Vous pouvez la consulter en vous connectant à votre compte.");
             $mailer->send($email2);
-            return $this->redirectToRoute('app_structure_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_partenaire_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('structure/new.html.twig', [

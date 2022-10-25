@@ -84,6 +84,45 @@ table.table {
     font-weight: 500;
 }
 
+.add-button {
+    background: #2A2A2A;
+    width: 180px;
+    height: 55px;
+    color: #858384;
+    list-style: none;
+    text-decoration: none;
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    margin: 35px;
+    cursor: pointer;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+
+.add-button:hover {
+    background: #b0b0b0;
+}
+
+.add-button a {
+    color: #858384;
+    list-style: none;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.add-button img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
 /-------------------------------------/
 
 
