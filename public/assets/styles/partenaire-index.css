@@ -148,3 +148,53 @@ tr.annonce {
     border-radius: 16px;
     transition: 0.3s;
 }
+
+@media only screen and (max-width: 980px) {
+tr.annonce:first-child {
+    margin: 0px 0px 20px 0px;
+}
+
+    tbody {
+        gap: 30px;
+    }
+}
+
+@media only screen and (max-width: 888px) {
+    tr.annonce:first-child {
+         margin: 0px;
+    }
+
+    tr.annonce {
+        margin: 0px;
+    }
+
+
+}
+
+@media only screen and (max-width: 856px) {
+    .add-button {
+        display: none;
+    }
+
+    .wrapper-flex {
+        margin-top: 50px;
+    }
+
+
+}
+
+@media only screen and (max-width: 474px) {
+    tr.annonce {
+        width: 100%;
+    }
+
+
+}
+
+@media only screen and (max-width: 474px) {
+    .wrapper-flex {
+        float: initial;
+    }
+
+
+}

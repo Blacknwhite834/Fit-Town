@@ -128,6 +128,8 @@
     </form>
     <div class="wrapper-sort">
         <h3>Trier les éléments par :</h3>
+        <a href="{{path('app_partenaire_show', {'id': partenaire.id})}}" id="back-link" style="font-size: 20px;
+    font-weight: bold;">Retour à la liste</a></li>
         <li><btn   id="all">All</btn></li>
         <li><btn  id="active-btn">Actif</btn></li>
         <li><btn  id="not-active-btn">Inactif</btn></li>
@@ -183,6 +185,7 @@
         });
         // Live search script :
         jQuery(document).ready(function() {
+            $('#back-link').hide();
             var searchRequest = null;
             $("#search").keyup(function(){
                 var minlength = 1;
@@ -204,6 +207,7 @@
                             if (value===$(that).val()) {
 
                                 entitySelector.html($(result).find(".table-structure"));
+                                $('#back-link').show();
 
                             }
                         }

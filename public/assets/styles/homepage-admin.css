@@ -138,10 +138,11 @@ html {
 .wrapper-bottom {
     display: flex;
     width: 100%;
+    gap: 180px;
 }
 
 .wrapper-bottom #categories {
-    margin: 45px 0px 0px 180px;
+    margin: 45px 0px 0px 0px;
 }
 
 /*-----------------------------*/
@@ -149,6 +150,7 @@ html {
 .hamMenu {
     float: right;
     margin: 21px;
+    display: none;
 }
 
 .ham {
@@ -165,6 +167,7 @@ html {
     transform: rotate(45deg);
     position: absolute;
     z-index: 99!important;
+    padding: 2px;
 }
 .hamRotate180.active {
     transform: rotate(180deg);
@@ -247,12 +250,14 @@ html {
 
 }
 
-@media only screen and (max-width: 1782px) {
+@media only screen and (max-width: 1781px) {
         .wrapper-bottom {
             flex-wrap: wrap;
+            gap: 40px;
         }
 
        .wrapper-bottom #categories {
+           margin: 45px 0px 0px 0px;
 
         }
 
@@ -264,6 +269,10 @@ html {
 @media only screen and (max-width: 1602px) {
     .card-single-2 {
         width: 220px;
+    }
+
+    .wrapper-bottom #categories {
+        margin: 45px 0px 0px 0px;
     }
 }
 
@@ -331,4 +340,96 @@ html {
         margin-top: 20px;
     }
 
+    .hamMenu {
+        display: block;
+        margin-right: 0px;
+    }
+
+    .wrapper-bottom #categories {
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .wrapper-bottom {
+        display: flex;
+        justify-content: center;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .container-table {
+        width: 100%;
+    }
+
 }
+
+@media only screen and (max-width: 540px) {
+    tr.annonce:first-child {
+        margin: 0px 0px 20px 0px;
+    }
+
+    tbody {
+        gap: 30px;
+    }
+
+    #categories {
+        width: 300px;
+        height: 300px;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 521px) {
+    tr.annonce {
+        width: 100%;
+        height: 200px;
+    }
+
+    .annonce #h3 {
+        margin: 0;
+    }
+
+    .annonce #h1 {
+        padding: 7px 0;
+        line-height: 106px;
+    }
+
+    tbody {
+        gap: 0px;
+    }
+
+
+
+
+
+}
+
+@media only screen and (max-width: 488px) {
+    .add-button {
+        display: none;
+    }
+
+}
+
+
+@media only screen and (max-width: 477px) {
+   .add-button {
+       display: none;
+   }
+
+}
+
+@media only screen and (max-width: 437px) {
+    #description {
+        line-height: normal;
+    }
+
+}
+
+
+
+

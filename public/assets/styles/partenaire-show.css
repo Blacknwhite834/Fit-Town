@@ -12,7 +12,8 @@ html {
 
 .wrapper-1 {
     width: 100%;
-    height: 200px;
+    min-height: 200px;
+    height: auto;
     margin-top: 50px;
     background: #242424;
     border-radius: 40px;
@@ -26,6 +27,13 @@ tr.annonce {
 tr.annonce:last-child {
     background: #242424;
 
+}
+
+.wrapper-1 tr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 .wrapper-1 h3 {
@@ -82,6 +90,10 @@ table.table {
     font-size: 21px;
     line-height: 0;
     font-weight: 500;
+}
+
+.wrapper-permission {
+    height: auto;
 }
 
 .wrapper-sort h3 {
