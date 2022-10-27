@@ -5,7 +5,7 @@ html {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: white;
+    background: #111111;
     font-family: 'Raleway', sans-serif;
     scroll-behavior: smooth;
 }
@@ -131,7 +131,11 @@ li {
     width: 287px;
     background: transparent linear-gradient(212deg, #687390 0%, #595249 100%) 0% 0% no-repeat padding-box;
     border-radius: 40px;
-    transition: 0.5s ease;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
     cursor: pointer;
     margin: 0px 75px 0px 0px;
 }
@@ -151,7 +155,11 @@ tbody {
 
 .annonce {
     background: transparent linear-gradient(211deg, #17917A 0%, #198E77 0%, #49412FDD 100%) 0% 0% no-repeat padding-box;
-    transition: 0.5s ease;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
 }
 
 .annonce:hover {
@@ -160,7 +168,11 @@ tbody {
 
 .annonce:last-child {
     background: transparent linear-gradient(221deg, #8D7270 0%, #5C5344 100%) 0% 0% no-repeat padding-box;
-    transition: 0.5s ease;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
 
 }
 

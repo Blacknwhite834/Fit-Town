@@ -39,6 +39,9 @@ class Structure implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'Structure', cascade: ['persist', 'remove'])]
     private ?StructurePermission $structurePermission = null;
 
+    #[ORM\Column]
+    private ?bool $is_password_change = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -158,6 +161,18 @@ class Structure implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->structurePermission = $structurePermission;
+
+        return $this;
+    }
+
+    public function isIsPasswordChange(): ?bool
+    {
+        return $this->is_password_change;
+    }
+
+    public function setIsPasswordChange(bool $is_password_change): self
+    {
+        $this->is_password_change = $is_password_change;
 
         return $this;
     }

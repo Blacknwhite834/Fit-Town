@@ -44,6 +44,10 @@ class Partenaire implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'partenaire', cascade: ['persist', 'remove'])]
     private ?PartenairePermission $partenairePermission = null;
 
+    #[ORM\Column]
+    private ?bool $is_password_change = false;
+
+
 
 
     public function __construct()
@@ -200,6 +204,18 @@ class Partenaire implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->partenairePermission = $partenairePermission;
+
+        return $this;
+    }
+
+    public function isIsPasswordChange(): ?bool
+    {
+        return $this->is_password_change;
+    }
+
+    public function setIsPasswordChange(bool $is_password_change): self
+    {
+        $this->is_password_change = $is_password_change;
 
         return $this;
     }

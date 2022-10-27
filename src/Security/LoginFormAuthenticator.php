@@ -2,6 +2,8 @@
 
 namespace App\Security;
 
+use App\Entity\Partenaire;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,18 +44,20 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+
+
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         };
 
-        $user = $token->getUser();
-        if (in_array('ROLE_ADMIN', $user->getRoles(), true)) {
-            return new RedirectResponse($this->urlGenerator->generate('app_homepage_admin'));
-        } elseif (in_array('ROLE_STRUCTURE', $user->getRoles(), true)) {
-            return new RedirectResponse($this->urlGenerator->generate('app_homepage_structure'));
-        } elseif (in_array('ROLE_PARTENAIRE', $user->getRoles(), true)) {
-            return new RedirectResponse($this->urlGenerator->generate('app_homepage'));
-        };
+                $user = $token->getUser();
+                if (in_array('ROLE_ADMIN', $user->getRoles(), true)) {
+                    return new RedirectResponse($this->urlGenerator->generate('app_homepage_admin'));
+                } elseif (in_array('ROLE_STRUCTURE', $user->getRoles(), true)) {
+                    return new RedirectResponse($this->urlGenerator->generate('app_homepage_structure'));
+                } elseif (in_array('ROLE_PARTENAIRE', $user->getRoles(), true)) {
+                    return new RedirectResponse($this->urlGenerator->generate('app_homepage'));
+                } ;
 
 
 
@@ -65,4 +69,9 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
+
+
+
+
+
 }
