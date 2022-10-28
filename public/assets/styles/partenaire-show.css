@@ -60,17 +60,48 @@ tr.annonce:last-child {
     color: white;
 }
 
+.wrapper-edit {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+
 .wrapper-1 a {
     color: #5A5858;
     font-size: 20px;
     font-weight: bold;
     text-align:center;
     display:block;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
 }
 
 .wrapper-1 button {
-    float: right;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #5A5858;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
 
+.wrapper-1 a:hover {
+    color: #b0b0b0;
+}
+
+.wrapper-1 button:hover {
+    color: #b0b0b0;
 }
 
 table.table {
@@ -88,7 +119,6 @@ table.table {
 .titles h3 {
     color: #8D8D8D;
     font-size: 21px;
-    line-height: 0;
     font-weight: 500;
 }
 
@@ -113,6 +143,36 @@ table.table {
     margin-top: 60px;
     padding: 0px;
     cursor: pointer;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+
+.wrapper-sort btn:hover {
+    color: #b0b0b0;
+}
+
+
+
+#img {
+    margin-top: 19px;
+    padding-bottom: 10px;
+}
+
+tr.annonce{
+    height: 320px;
+    padding: 16px;
+    margin: 0px;
+}
+
+.table-structure tbody{
+    gap: 50px;
+}
+
+tr.annonce:first-child {
+     margin: 0px;
 }
 
 /----------------------/
@@ -158,4 +218,87 @@ table.table {
     background: white;
     border-radius: 16px;
     transition: 0.3s;
+}
+
+@media only screen and (max-width: 521px) {
+
+    tr.annonce {
+         min-height: 230px;
+        height: auto;
+        }
+
+    .annonce #h1 {
+        padding: 45px;
+        line-height: normal;
+    }
+}
+
+@media only screen and (max-width: 521px) {
+
+    #img {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    .wrapper-edit {
+        gap: 10px;
+    }
+
+    .wrapper-1 table td {
+        font-size: 8vw;
+    }
+
+    .wrapper-permission td {
+        font-size: 5vw;
+    }
+
+}
+
+@media only screen and (max-width: 363px) {
+    #search {
+        width: 65%;
+    }
+
+    .annonce #h1 {
+        padding: 10px;
+    }
+
+    tr.annonce {
+        min-height: auto;
+        height: auto;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 316px) {
+    .main h1 {
+        font-size: 15vw;
+    }
+
+    .main h2 {
+        font-size: 7vw;
+    }
+
+    .titles h3 {
+        font-size: 6vw;
+    }
+
+    tr.annonce{
+        padding: 10px;
+    }
+
+    .annonce #h1 {
+        font-size: 10vw;
+    }
+
+}
+
+@media only screen and (max-width: 292px) {
+    .wrapper-edit {
+        display: block;
+    }
+
 }

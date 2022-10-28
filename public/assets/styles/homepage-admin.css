@@ -261,9 +261,6 @@ html {
 
         }
 
-
-
-
 }
 
 @media only screen and (max-width: 1602px) {
@@ -281,15 +278,18 @@ html {
     .cards {
         display: inline-block;
         height: auto;
+
     }
 
     .card-single {
-        width:100%;
+        width:98%;
         height: 190px;
+        padding: 10px;
     }
     .card-single-2 {
-         width:100%;
+         width:98%;
         height: 190px;
+        padding: 10px;
      }
 
     .card-single h3 {
@@ -321,7 +321,7 @@ html {
     }
 
     tr.annonce:first-child {
-        margin: 0px 50px 20px 0px;
+        margin: 0px;
     }
 }
 
@@ -372,6 +372,10 @@ html {
         width: 100%;
     }
 
+    tr.annonce {
+        width: 45%;
+    }
+
 }
 
 @media only screen and (max-width: 540px) {
@@ -395,7 +399,10 @@ html {
 @media only screen and (max-width: 521px) {
     tr.annonce {
         width: 100%;
-        height: 200px;
+        min-height: 115px;
+        height: auto;
+        padding: 15px;
+        border-radius: 25px;
     }
 
     .annonce #h3 {
@@ -404,15 +411,24 @@ html {
 
     .annonce #h1 {
         padding: 7px 0;
-        line-height: 106px;
     }
 
     tbody {
-        gap: 0px;
+        gap: 20px;
+        margin-top: 0px;
     }
 
+    .card-single {
+        height: 160px;
+    }
 
+    .container-table tbody {
+        flex-wrap: initial;
+    }
 
+    .cards {
+        margin-top: 20px;
+    }
 
 
 }
@@ -432,6 +448,19 @@ html {
 
 }
 
+@media only screen and (max-width: 440px) {
+    .annonce #h1 {
+        font-size: 7vw;
+    }
+
+    .annonce #h3 {
+        font-size: 4vw;
+    }
+
+}
+
+
+
 @media only screen and (max-width: 437px) {
     #description {
         line-height: normal;
@@ -439,9 +468,24 @@ html {
 
 }
 
+@media only screen and (max-width: 331px) {
+    #categories {
+        width: 200px;
+    }
+
+}
+
 @media only screen and (max-width: 316px) {
     .mobile-menu-items li a {
         font-size: 15vw;
+    }
+
+    #main-title{
+        font-size: 15vw;
+    }
+
+    #main-description {
+        font-size: 7vw;
     }
 
 }

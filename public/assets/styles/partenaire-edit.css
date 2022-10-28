@@ -22,7 +22,7 @@ html {
     border-radius: 40px;
     width: 90%;
     height: 70px;
-   margin: 0 0 20px;
+    margin: 0 0 20px;
 }
 
 input[type] {
@@ -41,6 +41,52 @@ input[type]:focus {
     float: none;
     border: none;
     margin: 0;
+}
+
+.wrapper-edit {
+    display: flex;
+    gap: 30px;
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+
+.wrapper-edit a {
+    color: #5A5858;
+    font-size: 20px;
+    font-weight: bold;
+    display:block;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+
+.wrapper-edit button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #5A5858;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+
+.main h1 {
+    line-height: normal;
+}
+
+.wrapper-edit a:hover {
+    color: #b0b0b0;
+}
+
+.wrapper-edit button:hover {
+    color: #b0b0b0;
 }
 
 @media only screen and (max-width: 530px) {
@@ -125,7 +171,7 @@ input[type]:focus {
 
     .ham {
         position: relative;
-   }
+    }
 
     .hamMenu {
         float: left;

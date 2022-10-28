@@ -79,6 +79,15 @@ tr.annonce {
     margin-top: 60px;
     padding: 0px;
     cursor: pointer;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+
+.wrapper-sort btn:hover {
+    color: #b0b0b0;
 }
 
 .annonce #name {
@@ -179,6 +188,12 @@ tr.annonce:first-child {
     .wrapper-flex {
         margin-top: 50px;
     }
+
+
+}
+
+@media only screen and (max-width: 521px) {
+
 
 
 }

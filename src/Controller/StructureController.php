@@ -152,9 +152,12 @@ class StructureController extends AbstractController
             return $this->redirectToRoute('app_structure_index', [], Response::HTTP_SEE_OTHER);
         }
 
+        $getEmail = $this->getUser()->getEmail();
+
         return $this->renderForm('structure/edit.html.twig', [
             'structure' => $structure,
             'form' => $form,
+            'email'=>$getEmail,
         ]);
     }
 

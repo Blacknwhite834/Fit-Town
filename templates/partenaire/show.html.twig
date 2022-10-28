@@ -9,6 +9,28 @@
 {% block body %}
     {{ block('homepageadmin', 'homepage_admin/index.html.twig') }}
 <div class="main">
+    <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2" onclick="location.href='{{path('app_homepage_admin')}}';"/>
+    <div class="hamMenu">
+        <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('active')">
+
+            <path
+                    class="line top"
+                    d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
+            <path
+                    class="line middle"
+                    d="m 30,50 h 40" />
+            <path
+                    class="line bottom"
+                    d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
+        </svg>
+    </div>
+    <div class="mobile-menu">
+        <div class="mobile-menu-items">
+            <li {% if app.request.attributes.get('_route') == 'app_homepage_admin' %} class="active" {% endif %}> <a href="{{ path('app_homepage_admin') }}" >Dashboard</a></li>
+            <li {% if app.request.attributes.get('_route') == 'app_partenaire_index' %} class="active" {% endif %}>  <a href="{{ path('app_partenaire_index') }}">Partenaire</a></li>
+            <li {% if app.request.attributes.get('_route') == 'app_logout' %} class="active" {% endif %}>  <a href="{{ path('app_logout') }}">Log out</a></li>
+        </div>
+    </div>
     <div class="add-button" onclick="location.href='{{path('app_partenaire_new')}}';">
         <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_partenaire_new') }}">Ajouter</a>
     </div>
@@ -44,11 +66,14 @@
         </tbody>
     </table>
 
-
+    <div class="wrapper-edit">
     <a href="{{ path('app_partenaire_edit', {'id': partenaire.id}) }}">edit</a>
     <a href="{{ path('app_structure_new', {'id': partenaire.id}) }}">ajouter structure</a>
+    <div style="display: flex; justify-content: center">
+        {{ include('partenaire/_delete_form.html.twig') }}
+    </div>
+    </div>
 
-    {{ include('partenaire/_delete_form.html.twig') }}
     </div>
     <div class="titles">
     <h1>Permissions</h1>
@@ -168,6 +193,15 @@
 {% block javascripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
+        $(document).ready(function(){
+            $(".ham").click(function(){
+                if ($(".mobile-menu").css("display") === "none") {
+                    $(".mobile-menu").css("display", "block");
+                } else {
+                    $(".mobile-menu").css("display", "none");
+                }
+            });
+        });
         // Filter list script :
         jQuery(document).ready(function(){
             $('#active-btn').click(function(){

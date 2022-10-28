@@ -23,7 +23,7 @@
          {% endblock%}
 <!-- Page content -->
 <div class="main">
-    <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2"/>
+    <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2" onclick="location.href='{{path('app_homepage_admin')}}';"/>
     <div class="add-button" onclick="location.href='{{path('app_partenaire_new')}}';">
         <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_partenaire_new') }}">Ajouter</a>
     </div>
@@ -41,8 +41,10 @@
                     d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
         </svg>
     </div>
-    <h1>Dashboard</h1>
-    <h2>Bienvenue !</h2>
+
+    <h1 id="main-title">Dashboard</h1>
+    <h2 id="main-description">Bienvenue !</h2>
+
 
 
     <div class="mobile-menu">

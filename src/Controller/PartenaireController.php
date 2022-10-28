@@ -493,7 +493,7 @@ class PartenaireController extends AbstractController
     {
         $form = $this->createForm(PartenaireType::class, $partenaire);
         $form->handleRequest($request);
-
+        $getEmail = $this->getUser()->getEmail();
         if ($form->isSubmitted() && $form->isValid()) {
             $partenaireRepository->add($partenaire, true);
 
@@ -503,6 +503,7 @@ class PartenaireController extends AbstractController
         return $this->renderForm('partenaire/edit.html.twig', [
             'partenaire' => $partenaire,
             'form' => $form,
+            'email'=>$getEmail,
         ]);
     }
 
