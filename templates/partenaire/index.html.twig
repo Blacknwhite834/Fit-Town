@@ -9,7 +9,7 @@
 {% block body %}
     {{ block('homepageadmin', 'homepage_admin/index.html.twig') }}
     <div class="main">
-        <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2"/>
+        <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2" onclick="location.href='{{path('app_homepage_admin')}}';"/>
 
         <div class="hamMenu">
             <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('active')">
@@ -56,9 +56,11 @@
         <h3>Trier les éléments par :</h3>
             <a href="{{ path('app_partenaire_index') }}" id="back-link" style="font-size: 20px;
     font-weight: bold;">Retour à la liste</a></li>
+
             <li><btn   id="all">All</btn></li>
         <li><btn  id="active-btn">Actif</btn></li>
         <li><btn  id="not-active-btn">Inactif</btn></li>
+
         </div>
 
 

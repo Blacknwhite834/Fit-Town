@@ -198,3 +198,36 @@ tr.annonce:first-child {
 
 
 }
+
+@media only screen and (max-width: 313px) {
+    .main h1 {
+        font-size: 15vw;
+    }
+
+    .main h2 {
+        font-size: 7vw;
+    }
+
+    .annonce td {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+}
+
+@media only screen and (max-width: 257px) {
+    .annonce td {
+        font-size: 7vw;
+    }
+
+
+}
+
+@media only screen and (max-width: 227px) {
+    #search {
+        width: 100%;
+    }
+
+
+}
