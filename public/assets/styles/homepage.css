@@ -134,6 +134,7 @@ li {
     margin-top: 60px;
 }
 
+
 .card-single {
     height: 290px;
     width: 287px;
@@ -156,7 +157,7 @@ tbody {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding: 0;
+    padding: 0px 0px 20px;
     margin-top: 17px;
     gap: 10px;
 }
@@ -282,6 +283,33 @@ table.table {
     width: 27%;
     height: 290px;
     border-radius: 40px;
+}
+
+
+@media only screen and (max-width: 521px) {
+
+    .wrapper-permission td {
+        font-size: 5vw;
+    }
+}
+
+@media only screen and (max-width: 316px) {
+    .main h1 {
+        font-size: 15vw;
+    }
+
+    .main h2 {
+        font-size: 7vw;
+    }
+
+    .card-single h1 {
+        font-size: 7vw;
+
+    }
+
+    .card-single {
+        padding: 1px!important;
+    }
 }
 
 
