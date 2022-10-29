@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Login | Fit Town{% endblock %}
 {% block stylesheets %}
     <link href="{{ asset('assets/styles/login.css')}}" rel="stylesheet">
 {% endblock %}
@@ -12,7 +12,7 @@
             <img src="{{ asset('./assets/images/logo.png')}}" alt="logo" class="logo">
 <form method="post">
     {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        <div class="alert alert-danger" style="color: white">Mot de passe ou email incorrect</div>
     {% endif %}
 
     {% if app.user %}

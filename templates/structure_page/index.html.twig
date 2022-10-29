@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StructurePageController!{% endblock %}
+{% block title %}Structure | Fit Town{% endblock %}
 {% block stylesheets %}
     <link href="{{ asset('assets/styles/homepage.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/styles/partenaire-index.css')}}" rel="stylesheet">
@@ -10,7 +10,23 @@
 {% block body %}
     {{ block('homepage', 'homepage/index.html.twig') }}
 <div class="main">
-    <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2" onclick="location.href='{{path('app_homepage_admin')}}';"/>    <div class="hamMenu">
+    <form action="{{ path('app_structure_page') }}" style="float: right; margin: 45px;">
+        <input
+                id="search"
+                type="search"
+                name="q"
+                class="form-control"
+                placeholder="Rechercher..."
+                aria-label="Search"
+        />
+    </form>
+    {% if is_granted('ROLE_ADMIN') %}
+    <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2" onclick="location.href='{{path('app_homepage_admin')}}';"/>
+    {% else %}
+    <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2" onclick="location.href='{{path('app_homepage')}}';"/>
+    {% endif %}
+
+    <div class="hamMenu">
         <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('active')">
 
             <path
@@ -26,15 +42,23 @@
     </div>
     <div class="mobile-menu">
         <div class="mobile-menu-items">
-            <li {% if app.request.attributes.get('_route') == 'app_homepage_admin' %} class="active" {% endif %}> <a href="{{ path('app_homepage_admin') }}" >Dashboard</a></li>
-            <li {% if app.request.attributes.get('_route') == 'app_partenaire_index' %} class="active" {% endif %}>  <a href="{{ path('app_partenaire_index') }}">Partenaire</a></li>
+            <li {% if app.request.attributes.get('_route') == 'app_homepage' %} class="active" {% endif %}> <a href="{{ path('app_homepage') }}" >Dashboard</a></li>
+            <li {% if app.request.attributes.get('_route') == 'app_structure_page' %} class="active" {% endif %}>  <a href="{{ path('app_structure_page') }}">Structure</a></li>
             <li {% if app.request.attributes.get('_route') == 'app_logout' %} class="active" {% endif %}>  <a href="{{ path('app_logout') }}">Log out</a></li>
         </div>
     </div>
     <h1>Structure</h1>
-    <h2>Structure à {{ name }} </h2>
+    <h2>Structure(s) à {{ name }} </h2>
 
 
+    <div class="wrapper-sort">
+        <h3>Trier les éléments par :</h3>
+        <a href="{{path('app_structure_page')}}" id="back-link" style="font-size: 20px;
+    font-weight: bold;">Retour à la liste</a></li>
+        <li><btn   id="all">All</btn></li>
+        <li><btn  id="active-btn">Actif</btn></li>
+        <li><btn  id="not-active-btn">Inactif</btn></li>
+    </div>
     <div class="cards">
 
 
@@ -42,14 +66,15 @@
             <table class="table">
                 <tbody>
                 {% for structure in structures %}
-                    <tr class="annonce" onclick="location.href='{{path('app_structure_show', {'id': structure.id})}}';">
+                    <tr class="annonce {{ (structure.isActive) ? 'active-items' : 'not-active-items'}}" onclick="location.href='{{path('app_structure_show', {'id': structure.id})}}';">
                         <td id="h3">Structures</td>
                         <td id="h1">{{ structure.Adresse }}</td>
+                        <td id="h3" style="margin-top: 0px">{{ structure.isActive ? 'On' : 'Off' }}</td>
                         <td><div id="img"><img src="{{ asset('assets/images/arrow.png')}}"/></div></td>
                     </tr>
                 {% else %}
 
-                    <h1 colspan="7">Pas de structure/s pour le moment</h1>
+                    <h1 colspan="7">Pas de structure(s)</h1>
 
                 {% endfor %}
                 </tbody>
@@ -67,7 +92,63 @@
 {% block javascripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
+        $(document).ready(function(){
+            $(".ham").click(function(){
+                if ($(".mobile-menu").css("display") === "none") {
+                    $(".mobile-menu").css("display", "block");
+                } else {
+                    $(".mobile-menu").css("display", "none");
+                }
+            });
+        });
+        // Filter list script :
+        jQuery(document).ready(function(){
+            $('#active-btn').click(function(){
+                $('.not-active-items').hide();
+                $('.active-items').show();
+            });
+            $('#not-active-btn').click(function(){
+                $('.active-items').hide();
+                $('.not-active-items').show();
+            });
+            $('#all').click(function(){
+                $('.active-items').show();
+                $('.not-active-items').show();
+            });
+        });
+        // Live search script :
+        jQuery(document).ready(function() {
+            $('#back-link').hide();
+            var searchRequest = null;
+            $("#search").keyup(function(){
+                var minlength = 1;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $(".table");
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('app_structure_page') }}",
+                        data: {
+                            'q' : value
+                        },
+                        dataType: "text",
+                        success: function(result){
+                            //we need to check if the value is the same
+                            if (value===$(that).val()) {
 
+                                entitySelector.html($(result).find(".table"));
+                                $('#back-link').show();
+
+                            }
+                        }
+                    });
+                }
+            });
+
+        })
 
         $(document).ready(function(){
             $(".ham").click(function(){

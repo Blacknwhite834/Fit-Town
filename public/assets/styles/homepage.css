@@ -130,7 +130,6 @@ li {
     display: flex;
     width: 100%;
     height: 300px;
-    align-items: center;
     margin-top: 60px;
 }
 
@@ -158,7 +157,6 @@ tbody {
     flex-wrap: wrap;
     justify-content: space-evenly;
 
-    margin-top: 17px;
     gap: 10px;
 }
 
@@ -258,7 +256,7 @@ table.table {
 
 .wrapper-permission {
     width: 98%;
-    height: 350px;
+    height: auto;
 }
 
 .wrapper-permission tbody {

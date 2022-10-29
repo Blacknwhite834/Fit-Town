@@ -109,6 +109,10 @@ table.table {
 
 }
 
+tbody {
+    padding: 10px;
+}
+
 
 .wrapper-permission td {
     display: block;
@@ -121,9 +125,12 @@ table.table {
 
 
 #title-2 {
-    margin-top: 70px;
+    margin-top: 0px;
 }
 
+#title-home {
+    font-size: 30px!important;
+}
 
 .titles h1 {
     font-size: 30px;

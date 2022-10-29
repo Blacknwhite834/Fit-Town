@@ -23,4 +23,11 @@ tr.annonce {
     }
 }
 
+@media only screen and (max-width: 521px) {
+
+    #img  {
+        display: flex;
+    }
+}
+
 

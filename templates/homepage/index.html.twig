@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomepageController!{% endblock %}
+{% block title %}Dashboard | Fit Town{% endblock %}
 {% block stylesheets %}
     <link href="{{ asset('assets/styles/homepage.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/styles/homepage-admin.css')}}" rel="stylesheet">
@@ -28,7 +28,11 @@
     {% endblock %}
     <!-- Page content -->
     <div class="main">
-        <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2" onclick="location.href='{{path('app_homepage_admin')}}';"/>
+        {% if is_granted('ROLE_ADMIN') %}
+            <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2" onclick="location.href='{{path('app_homepage_admin')}}';"/>
+        {% else %}
+            <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2" onclick="location.href='{{path('app_homepage')}}';"/>
+        {% endif %}
 
         <div class="hamMenu">
             <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('active')">
@@ -46,8 +50,8 @@
         </div>
         <div class="mobile-menu">
             <div class="mobile-menu-items">
-                <li {% if app.request.attributes.get('_route') == 'app_homepage_admin' %} class="active" {% endif %}> <a href="{{ path('app_homepage_admin') }}" >Dashboard</a></li>
-                <li {% if app.request.attributes.get('_route') == 'app_partenaire_index' %} class="active" {% endif %}>  <a href="{{ path('app_partenaire_index') }}">Partenaire</a></li>
+                <li {% if app.request.attributes.get('_route') == 'app_homepage' %} class="active" {% endif %}> <a href="{{ path('app_homepage') }}" >Dashboard</a></li>
+                <li {% if app.request.attributes.get('_route') == 'app_structure_page' %} class="active" {% endif %}>  <a href="{{ path('app_structure_page') }}">Structure</a></li>
                 <li {% if app.request.attributes.get('_route') == 'app_logout' %} class="active" {% endif %}>  <a href="{{ path('app_logout') }}">Log out</a></li>
             </div>
         </div>
@@ -87,7 +91,7 @@
                     </div>
 
         </div>
-        <h1>Permissions</h1>
+        <h1 style="font-size: 30px">Permissions</h1>
         <h2>Permissions globales</h2>
         <div class="wrapper-permission">
             <table class="table">

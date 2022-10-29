@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Structure{% endblock %}
+{% block title %}Voir | Fit Town{% endblock %}
 {% block stylesheets %}
 <link href="{{ asset('assets/styles/homepage.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/styles/homepage-admin.css')}}" rel="stylesheet">
@@ -30,8 +30,8 @@
         </div>
         <div class="mobile-menu">
             <div class="mobile-menu-items">
-                <li {% if app.request.attributes.get('_route') == 'app_homepage_admin' %} class="active" {% endif %}> <a href="{{ path('app_homepage_admin') }}" >Dashboard</a></li>
-                <li {% if app.request.attributes.get('_route') == 'app_partenaire_index' %} class="active" {% endif %}>  <a href="{{ path('app_partenaire_index') }}">Partenaire</a></li>
+                {% if is_granted('ROLE_ADMIN') %}  <li {% if app.request.attributes.get('_route') == 'app_homepage_admin' %} class="active" {% endif %}> <a href="{{ path('app_homepage_admin') }}" >Dashboard</a></li> {% else %} <li {% if app.request.attributes.get('_route') == 'app_homepage' %} class="active" {% endif %}> <a href="{{ path('app_homepage') }}" >Dashboard</a></li>{% endif %}
+                {% if is_granted('ROLE_ADMIN') %} <li {% if app.request.attributes.get('_route') == 'app_partenaire_index' %} class="active" {% endif %}>  <a href="{{ path('app_partenaire_index') }}">Partenaire</a></li>{% else %} <li {% if app.request.attributes.get('_route') == 'app_structure_page' %} class="active" {% endif %}> <a href="{{ path('app_structure_page') }}" >Structure</a></li>{% endif %}
                 <li {% if app.request.attributes.get('_route') == 'app_logout' %} class="active" {% endif %}>  <a href="{{ path('app_logout') }}">Log out</a></li>
             </div>
         </div>
@@ -40,6 +40,7 @@
             <img src="{{ asset('assets/images/add.png')}}"/> <a href="{{ path('app_partenaire_new') }}">Ajouter</a>
         </div>
         {% endif %}
+
 
     <h1>Structure</h1>
         <h2>Structure de ce partenaire </h2>

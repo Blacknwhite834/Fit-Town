@@ -38,8 +38,7 @@
         </div>
         <div class="mobile-menu">
             <div class="mobile-menu-items">
-                <li {% if app.request.attributes.get('_route') == 'app_homepage_admin' %} class="active" {% endif %}> <a href="{{ path('app_homepage_admin') }}" >Dashboard</a></li>
-                <li {% if app.request.attributes.get('_route') == 'app_partenaire_index' %} class="active" {% endif %}>  <a href="{{ path('app_partenaire_index') }}">Partenaire</a></li>
+                <li {% if app.request.attributes.get('_route') == 'app_homepage_structure' %} class="active" {% endif %}> <a href="{{ path('app_homepage_structure') }}" >Dashboard</a></li>
                 <li {% if app.request.attributes.get('_route') == 'app_logout' %} class="active" {% endif %}>  <a href="{{ path('app_logout') }}">Log out</a></li>
             </div>
         </div>
@@ -71,7 +70,7 @@
             </table>
         </div>
 
-        <h1>Permissions</h1>
+        <h1 id="title-home">Permissions</h1>
         <h2 id="title-2">Permissions de la structure</h2>
         <div class="wrapper-permission">
             <table class="table">
