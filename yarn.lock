@@ -1013,7 +1013,7 @@
     "loader-utils" "^2.0.0"
     "schema-utils" "^3.0.0"
 
-"@symfony/webpack-encore@^4.0.0":
+"@symfony/webpack-encore@^4.1.1":
   "integrity" "sha512-uZRXej1prTvYG/QJWR/DzKcZtBKEXDkGtK9qlQtO43ip8t8NIZmM+w8qeb4eiS7aoULWmpG7GpQOLWPhsccUDA=="
   "resolved" "https://registry.npmjs.org/@symfony/webpack-encore/-/webpack-encore-4.1.1.tgz"
   "version" "4.1.1"
