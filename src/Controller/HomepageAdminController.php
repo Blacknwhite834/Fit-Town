@@ -4,10 +4,14 @@ namespace App\Controller;
 
 use App\Repository\PartenaireRepository;
 use App\Repository\StructureRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @IsGranted("ROLE_ADMIN")
+ */
 class HomepageAdminController extends AbstractController
 {
     #[Route('/homepage-admin', name: 'app_homepage_admin', methods: ['GET'])]

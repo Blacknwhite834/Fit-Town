@@ -5,10 +5,14 @@ namespace App\Controller;
 use App\Entity\Structure;
 use App\Repository\StructurePermissionRepository;
 use App\Repository\StructureRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @IsGranted("ROLE_STRUCTURE")
+ */
 class HomepageStructureController extends AbstractController
 {
     #[Route('/homepage-structure', name: 'app_homepage_structure', methods: ['GET', 'POST'])]
