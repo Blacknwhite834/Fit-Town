@@ -1,0 +1,55 @@
+.container-reset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 98%;
+    font-family: 'Raleway', sans-serif;
+    padding: 1px 10px;
+}
+
+.container-reset h1 {
+    color: white;
+    font-weight: 600;
+    font-size: 50px;
+    margin-top: 100px;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+.wrapper-input button{
+    background: #242424;
+    width: 180px;
+    height: 55px;
+    color: #858384;
+    list-style: none;
+    text-decoration: none;
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+    border: none;
+}
+
+.wrapper-input button:hover {
+    background: #b0b0b0;
+    color: black;
+}
+
+label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 26px;
+    color: #8D8D8D;
+    padding-left: 27px;
+}
+

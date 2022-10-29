@@ -138,3 +138,33 @@ input[type=password]:focus {
     background: #707070;
     color: white;
 }
+
+@media only screen and (max-width: 1386px) {
+    .container-left {
+        display: none;
+    }
+
+    .container-right {
+        top: auto;
+        right: auto;
+        position: initial;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 661px) {
+    form {
+        left: 45%;
+        width: 75%;
+    }
+
+    .container-right input {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 281px) {
+    .logo {
+        display: none;
+    }
+}
