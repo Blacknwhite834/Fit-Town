@@ -153,7 +153,7 @@ class StructureController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $structureRepository->add($structure, true);
 
-            return $this->redirectToRoute('app_structure_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_partenaire_index', [], Response::HTTP_SEE_OTHER);
         }
 
         $getEmail = $this->getUser()->getEmail();
