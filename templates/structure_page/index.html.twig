@@ -10,25 +10,13 @@
 {% block body %}
     {{ block('homepage', 'homepage/index.html.twig') }}
 <div class="main">
-    <form action="{{ path('app_structure_page') }}" style="float: right; margin: 45px;">
-        <input
-                id="search"
-                type="search"
-                name="q"
-                class="form-control"
-                placeholder="Rechercher..."
-                aria-label="Search"
-        />
-    </form>
     {% if is_granted('ROLE_ADMIN') %}
-    <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2" onclick="location.href='{{path('app_homepage_admin')}}';"/>
+        <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2" onclick="location.href='{{path('app_homepage_admin')}}';"/>
     {% else %}
-    <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2" onclick="location.href='{{path('app_homepage')}}';"/>
+        <img src="{{ asset('assets/images/logo-2.png')}}" id="logo-2" onclick="location.href='{{path('app_homepage')}}';"/>
     {% endif %}
-
     <div class="hamMenu">
         <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('active')">
-
             <path
                     class="line top"
                     d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
@@ -47,6 +35,18 @@
             <li {% if app.request.attributes.get('_route') == 'app_logout' %} class="active" {% endif %}>  <a href="{{ path('app_logout') }}">Log out</a></li>
         </div>
     </div>
+    <form action="{{ path('app_structure_page') }}" style="float: right; margin: 55px;">
+        <input
+                id="search"
+                type="search"
+                name="q"
+                class="form-control"
+                placeholder="Rechercher..."
+                aria-label="Search"
+        />
+    </form>
+
+
     <h1>Structure</h1>
     <h2>Structure(s) à {{ name }} </h2>
 
@@ -150,14 +150,5 @@
 
         })
 
-        $(document).ready(function(){
-            $(".ham").click(function(){
-                if ($(".mobile-menu").css("display") === "none") {
-                    $(".mobile-menu").css("display", "block");
-                } else {
-                    $(".mobile-menu").css("display", "none");
-                }
-            });
-        });
     </script>
 {% endblock %}

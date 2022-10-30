@@ -48,7 +48,7 @@ html {
 form {
     position: absolute;
     left: 50%;
-    top: 45%;
+    top: 450px;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
