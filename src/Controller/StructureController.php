@@ -410,6 +410,6 @@ class StructureController extends AbstractController
             $structureRepository->remove($structure, true);
         }
 
-        return $this->redirectToRoute('app_structure_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_partenaire_index', [], Response::HTTP_SEE_OTHER);
     }
 }

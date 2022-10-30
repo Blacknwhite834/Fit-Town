@@ -32,7 +32,7 @@ class Partenaire implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $Name = null;
 
-    #[ORM\OneToMany(mappedBy: 'partenaire', targetEntity: Structure::class)]
+    #[ORM\OneToMany(mappedBy: 'partenaire', targetEntity: Structure::class, cascade: ['persist', 'remove'])]
     private Collection $structures;
 
     #[ORM\Column(length: 255)]

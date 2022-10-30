@@ -511,7 +511,7 @@ class PartenaireController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_partenaire_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'app_partenaire_delete', methods: ['POST'])]
     public function delete(Request $request, Partenaire $partenaire, PartenaireRepository $partenaireRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$partenaire->getId(), $request->request->get('_token'))) {

@@ -49,7 +49,7 @@ class PartenairePermission
     #[ORM\JoinColumn(nullable: false)]
     private ?Partenaire $partenaire = null;
 
-    #[ORM\OneToMany(mappedBy: 'permission_partenaire', targetEntity: StructurePermission::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'permission_partenaire', targetEntity: StructurePermission::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private Collection $permission_structure;
 
