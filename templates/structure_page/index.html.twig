@@ -35,7 +35,7 @@
             <li {% if app.request.attributes.get('_route') == 'app_logout' %} class="active" {% endif %}>  <a href="{{ path('app_logout') }}">Log out</a></li>
         </div>
     </div>
-    <form action="{{ path('app_structure_page') }}" style="float: right; margin: 55px;">
+    <form action="{{ path('app_structure_page') }}" id="form-search">
         <input
                 id="search"
                 type="search"

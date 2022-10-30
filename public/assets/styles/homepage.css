@@ -263,6 +263,10 @@ table.table {
 
 }
 
+#h1-permission {
+    font-size: 30px;
+}
+
 
 .wrapper-permission td {
     display: block;
@@ -290,7 +294,7 @@ table.table {
 
 @media only screen and (max-width: 316px) {
     .main h1 {
-        font-size: 15vw;
+        font-size: 14vw;
     }
 
     .main h2 {
@@ -305,6 +309,22 @@ table.table {
     .card-single {
         padding: 1px!important;
     }
+}
+
+@media only screen and (max-width: 229px) {
+
+    #h1-permission {
+        font-size: 7vw;
+    }
+
+}
+
+@media only screen and (max-width: 225px) {
+
+    #logo-2 {
+        display: none!important;
+    }
+
 }
 
 

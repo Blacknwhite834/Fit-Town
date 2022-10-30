@@ -163,6 +163,13 @@ input[type=password]:focus {
     }
 }
 
+@media only screen and (max-width: 580px) {
+    .container-right {
+        display: flex;
+        justify-content: center;
+    }
+}
+
 @media only screen and (max-width: 281px) {
     .logo {
         display: none;

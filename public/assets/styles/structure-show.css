@@ -257,11 +257,34 @@ tbody {
     }
 
     .main h1 {
-        font-size: 15vw;
+        font-size: 14vw;
+    }
+
+    .titles h1 {
+        font-size: 8vw;
     }
 
     .main h2 {
-        font-size: 7vw;
+        font-size: 6vw;
+    }
+
+    .titles h3 {
+        font-size: 6vw;
+    }
+
+}
+
+@media only screen and (max-width: 315px) {
+    tbody {
+        padding: 0 10px 30px;
+    }
+
+}
+
+@media only screen and (max-width: 225px) {
+
+    #logo-2 {
+        display: none;
     }
 
 }
