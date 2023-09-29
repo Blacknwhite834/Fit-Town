@@ -1,7 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Login | Fit Town{% endblock %}
+{% block head %}
+    <meta name="description" content="Fit Town est une application web qui permet de gérer les salles de sport.">
+    <meta name="keywords" content="Fit Town, Fit, Town, salle, sport, gestion, abonnement, client, coach, salle de sport, coach sportif, abonnement salle de sport, abonnement coach sportif, client salle de sport, client coach sportif, salle de sport, coach sportif, abonnement salle de sport, abonnement coach sportif, client salle de sport, client coach sportif, salle de sport, coach sportif, abonnement salle de sport, abonnement coach sportif, client salle de sport, client coach sportif, salle de sport, coach sportif, abonnement salle de sport, abonnement coach sportif, client salle de sport, client coach sportif, salle de sport, coach sportif, abonnement salle de sport, abonnement coach sportif, client salle de sport, client coach sportif">
+    <meta name="author" content="Fit Town">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N5NYF435L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-N5NYF435L8');
+</script>
+{% endblock %}
 {% block stylesheets %}
     <link href="{{ asset('assets/styles/login.css')}}" rel="stylesheet">
 {% endblock %}
@@ -45,13 +59,4 @@
         </div>
     </div>
 {% endblock %}
-{% block javascripts %}
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5NYF435L8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-N5NYF435L8');
-</script>
-{% endblock %}
