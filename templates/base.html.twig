@@ -13,12 +13,14 @@
         {% endblock %}
 
         {% block javascripts %}
-        <script>
+       <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E26FJ5B6M4"></script>
+<script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-N5NYF435L8');
+  gtag('config', 'G-E26FJ5B6M4');
 </script>
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
