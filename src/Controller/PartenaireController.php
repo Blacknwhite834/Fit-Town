@@ -392,12 +392,7 @@ class PartenaireController extends AbstractController
             return $str;
         };
 
-
-
-
-
         $getEmail = $this->getUser()->getEmail();
-
 
         $form = $this->createForm(PartenaireType::class, $partenaire);
         $form->handleRequest($request);
@@ -418,12 +413,6 @@ class PartenaireController extends AbstractController
                     $partenaire->getPassword()
                 ));
             $partenaireRepository->add($partenaire, true);
-
-
-
-
-
-
 
             return $this->redirectToRoute('app_partenaire_permission', ['id'=>$partenaire->getId()], Response::HTTP_SEE_OTHER);
         }
