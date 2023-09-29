@@ -1,17 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Login | Fit Town{% endblock %}
-{% block head %}
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5NYF435L8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-N5NYF435L8');
-</script>
-{% endblock %}
 {% block stylesheets %}
     <link href="{{ asset('assets/styles/login.css')}}" rel="stylesheet">
 {% endblock %}
@@ -55,3 +45,14 @@
         </div>
     </div>
 {% endblock %}
+{% block javascripts %}
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5NYF435L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N5NYF435L8');
+</script>
+{% endblock %}
+```
